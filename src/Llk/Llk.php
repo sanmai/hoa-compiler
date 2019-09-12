@@ -55,13 +55,17 @@ abstract class Llk
      * The grammar description language is PP. See
      * `hoa://Library/Compiler/Llk/Llk.pp` for an example, or the documentation.
      *
-     * @param   \Hoa\Stream\IStream\In  $stream    Stream to read to grammar.
+     * @param   \Hoa\Stream\IStream\In|string  $stream    Stream to read to grammar.
      * @return  \Hoa\Compiler\Llk\Parser
      * @throws  \Hoa\Compiler\Exception
      */
-    public static function load(Stream\IStream\In $stream)
+    public static function load($stream)
     {
-        $pp = $stream->readAll();
+        if ($stream instanceof Stream\IStream\In) {
+            $pp = $stream->readAll();
+        } else {
+            $pp = $stream;
+        }
 
         if (empty($pp)) {
             $message = 'The grammar is empty';
@@ -72,7 +76,7 @@ abstract class Llk
                         ': The stream ' . $stream->getStreamName() .
                         ' is pointable and not rewinded, maybe it ' .
                         'could be the reason';
-                } else {
+                } elseif ($stream instanceof Stream\IStream\In) {
                     $message .=
                         ': Nothing to read on the stream ' .
                         $stream->getStreamName();
@@ -82,7 +86,7 @@ abstract class Llk
             throw new Compiler\Exception($message . '.', 0);
         }
 
-        static::parsePP($pp, $tokens, $rawRules, $pragmas, $stream->getStreamName());
+        static::parsePP($pp, $tokens, $rawRules, $pragmas, $stream instanceof Stream\IStream\In ? $stream->getStreamName() : '');
 
         $ruleAnalyzer = new Rule\Analyzer($tokens);
         $rules        = $ruleAnalyzer->analyzeRules($rawRules);
