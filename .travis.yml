@@ -22,5 +22,4 @@ install:
   - composer install --prefer-dist
 
 script:
-  - vendor/bin/php-cs-fixer --cache-file=build/cache/.php_cs.cache --verbose --dry-run --stop-on-violation fix
   - vendor/bin/hoa test:run
