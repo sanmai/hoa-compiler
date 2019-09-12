@@ -102,7 +102,7 @@ class Llk extends Test\Unit\Suite
     {
         $this
             ->given(
-                $stream = new File\Read('hoa://Library/Compiler/Llk/Llk.pp'),
+                $stream = new File\Read('src/Llk/Llk.pp'),
                 $parser = SUT::load($stream)
             )
             ->when($result = SUT::save($parser, 'Foobar'))
