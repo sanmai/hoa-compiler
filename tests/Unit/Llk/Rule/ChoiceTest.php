@@ -43,7 +43,7 @@ use Tests\Hoa\Compiler\TestCase;
  */
 class ChoiceTest extends TestCase
 {
-    public function test_case_is_a_rule()
+    public function test_is_a_rule()
     {
         $result = new \Hoa\Compiler\Llk\Rule\Choice('foo', ['bar']);
 
