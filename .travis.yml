@@ -22,4 +22,5 @@ install:
   - composer install --prefer-dist
 
 script:
+  - vendor/bin/phpunit
   - vendor/bin/atoum -ncc -d atoum/
