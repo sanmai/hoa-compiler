@@ -402,7 +402,7 @@ abstract class Ll1
                 }
 
                 if (in_array($this->_states[$c][$nextState], $this->_terminal[$c]) &&
-                    0    === $c &&
+                    0 === $c &&
                     true === $this->end()) {
 
                     //echo '*********** END REACHED **********' . "\n";
@@ -454,8 +454,8 @@ abstract class Ll1
                                 $column += $strlen;
                             }
 
-                            $line     += substr_count($match[1], "\n");
-                            $i        += $strlen - 1;
+                            $line += substr_count($match[1], "\n");
+                            $i += $strlen - 1;
                             $continue  = true;
 
                             break;
@@ -472,7 +472,7 @@ abstract class Ll1
             $epsilon = false;
             while (array_key_exists($nextToken, $this->_actions[$c][$nextState]) &&
                      (
-                        (
+                         (
                             is_array($this->_actions[$c][$nextState][$nextToken]) &&
                             0 < $foo = $this->_actions[$c][$nextState][$nextToken][0]
                         ) ||
@@ -548,8 +548,8 @@ abstract class Ll1
 
                             $nextChar   = $match[1];
                             $nextToken  = $e;
-                            $i         += $strlen - 1;
-                            $line      += substr_count($match[1], "\n");
+                            $i += $strlen - 1;
+                            $line += substr_count($match[1], "\n");
 
                             break;
                         }
@@ -591,7 +591,7 @@ abstract class Ll1
 
                     $_actions[$c]  = 2;
 
-                    $i            -= strlen($nextChar);
+                    $i -= strlen($nextChar);
                     $_tokens       = array_flip($this->_tokens[$c]);
                     $_states       = array_flip($this->_states[$c]);
 
@@ -612,7 +612,8 @@ abstract class Ll1
                     str_repeat(' ', $this->column) . '↑',
                     1,
                     [],
-                    $this->line + 1, $this->column + 1
+                    $this->line + 1,
+                    $this->column + 1
                 );
             }
 

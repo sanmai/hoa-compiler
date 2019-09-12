@@ -39,7 +39,8 @@
     },
     "require-dev": {
         "hoa/json": "~2.0",
-        "hoa/test": "~2.0"
+        "hoa/test": "~2.0",
+        "friendsofphp/php-cs-fixer": "^2.15"
     },
     "autoload": {
         "psr-4": {

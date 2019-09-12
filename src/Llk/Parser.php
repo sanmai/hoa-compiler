@@ -180,7 +180,7 @@ class Parser
         do {
             $out = $this->unfold();
 
-            if (null  !== $out &&
+            if (null !== $out &&
                 'EOF' === $this->_tokenSequence->current()['token']) {
                 break;
             }
@@ -318,7 +318,7 @@ class Parser
 
                     if ($trace instanceof Rule\Token &&
                         $unification === $trace->getUnificationIndex() &&
-                        $value       !== $trace->getValue()) {
+                        $value !== $trace->getValue()) {
                         return false;
                     }
                 }
@@ -327,7 +327,7 @@ class Parser
             $current = $this->_tokenSequence->current();
 
             $namespace = $current['namespace'];
-            $offset = $current['offset'];
+            $offset    = $current['offset'];
 
             $zzeRule   = clone $zeRule;
             $zzeRule->setValue($value);

@@ -128,13 +128,13 @@ class Analyzer
         return;
     }
 
-   /**
-     * Build the analyzer of the rules (does not analyze the rules).
-     *
-     * @param   array  $rules    Rule to be analyzed.
-     * @return  void
-     * @throws  \Hoa\Compiler\Exception
-     */
+    /**
+      * Build the analyzer of the rules (does not analyze the rules).
+      *
+      * @param   array  $rules    Rule to be analyzed.
+      * @return  void
+      * @throws  \Hoa\Compiler\Exception
+      */
     public function analyzeRules(array $rules)
     {
         if (empty($rules)) {
@@ -513,7 +513,7 @@ class Analyzer
                 );
             }
 
-            if (0     === $this->_lexer->key() &&
+            if (0 === $this->_lexer->key() &&
                 'EOF' === $this->_lexer->getNext()['token']) {
                 $name                      = $this->_transitionalRuleCounter++;
                 $this->_parsedRules[$name] = new Concatenation(

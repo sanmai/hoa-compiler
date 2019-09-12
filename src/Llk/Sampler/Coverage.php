@@ -186,7 +186,7 @@ class Coverage extends Sampler implements Iterator
     {
         $ruleName = $this->_rootRuleName;
 
-        if (true !== in_array(0,  $this->_coveredRules[$ruleName]) &&
+        if (true !== in_array(0, $this->_coveredRules[$ruleName]) &&
             true !== in_array(.5, $this->_coveredRules[$ruleName])) {
             return false;
         }

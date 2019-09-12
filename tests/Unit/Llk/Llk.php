@@ -76,7 +76,6 @@ class Llk extends Test\Unit\Suite
                     'ruleA:' . "\n" .
                     '    <foobar>'
                 ),
-
                 $_ruleA = new LUT\Llk\Rule\Token('ruleA', 'foobar', null, -1, true),
                 $_ruleA->setPPRepresentation(' <foobar>')
             )
@@ -110,7 +109,8 @@ class Llk extends Test\Unit\Suite
             ->when($result = SUT::save($parser, 'Foobar'))
             ->then
                 ->string($result)
-                    ->isEqualTo(<<<'OUTPUT'
+                    ->isEqualTo(
+                        <<<'OUTPUT'
 class Foobar extends \Hoa\Compiler\Llk\Parser
 {
     public function __construct()
@@ -203,7 +203,7 @@ class Foobar extends \Hoa\Compiler\Llk\Parser
 }
 
 OUTPUT
-);
+                    );
     }
 
     public function case_parse_tokens()

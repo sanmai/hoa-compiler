@@ -226,7 +226,7 @@ class Lexer
                             );
                         }
 
-                        while (1 <=  $i--) {
+                        while (1 <= $i--) {
                             $previousNamespace = $this->_nsStack->pop();
                         }
 

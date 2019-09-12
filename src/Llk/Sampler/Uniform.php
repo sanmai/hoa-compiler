@@ -253,7 +253,7 @@ class Uniform extends Sampler
                     }
 
                     $handle[$α]['n']  = $ut;
-                    $out             += $ut;
+                    $out += $ut;
                 }
             }
         } elseif ($rule instanceof Compiler\Llk\Rule\Token) {

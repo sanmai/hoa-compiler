@@ -68,7 +68,6 @@ class Analyzer extends Test\Integration\Suite
                 $tokens   = ['default' => ['foo' => 'bar']],
                 $ruleA    = $kept ? '<foo>' : '::foo::',
                 $analyzer = new SUT($tokens),
-
                 $_ruleA = new Rule\Token('ruleA', 'foo', null, -1, $kept),
                 $_ruleA->setPPRepresentation($ruleA)
             )
@@ -90,7 +89,6 @@ class Analyzer extends Test\Integration\Suite
                     'ruleB' => '<foo>'
                 ],
                 $analyzer = new SUT($tokens),
-
                 $_ruleA = new Rule\Concatenation('ruleA', ['ruleB']),
                 $_ruleA->setPPRepresentation($rules['ruleA']),
                 $_ruleB = new Rule\Token('ruleB', 'foo', null, -1, true),
@@ -122,7 +120,6 @@ class Analyzer extends Test\Integration\Suite
                 $tokens   = ['default' => ['foo' => 'bar']],
                 $ruleA    = $kept ? '<foo[42]>' : '::foo[42]::',
                 $analyzer = new SUT($tokens),
-
                 $_ruleA = new Rule\Token('ruleA', 'foo', null, 42, $kept),
                 $_ruleA->setPPRepresentation($ruleA)
             )
@@ -171,7 +168,6 @@ class Analyzer extends Test\Integration\Suite
                 $tokens   = ['default' => ['foo' => 'bar']],
                 $ruleA    = '<foo>' . $quantifier,
                 $analyzer = new SUT($tokens),
-
                 $_ruleA = new Rule\Repetition('ruleA', $min, $max, 0, null),
                 $_ruleA->setPPRepresentation($ruleA),
                 $_rule0 = new Rule\Token(0, 'foo', null, -1, true)
@@ -192,7 +188,6 @@ class Analyzer extends Test\Integration\Suite
                 $tokens   = ['default' => ['foo' => 'bar', 'baz' => 'qux']],
                 $ruleA    = '<foo> <baz>',
                 $analyzer = new SUT($tokens),
-
                 $_ruleA = new Rule\Concatenation('ruleA', [0, 1], null),
                 $_ruleA->setPPRepresentation($ruleA),
                 $_rule0 = new Rule\Token(0, 'foo', null, -1, true),
@@ -215,7 +210,6 @@ class Analyzer extends Test\Integration\Suite
                 $tokens   = ['default' => ['foo' => 'bar', 'baz' => 'qux']],
                 $ruleA    = '<foo> | <baz>',
                 $analyzer = new SUT($tokens),
-
                 $_ruleA = new Rule\Choice('ruleA', [0, 1], null),
                 $_ruleA->setPPRepresentation($ruleA),
                 $_rule0 = new Rule\Token(0, 'foo', null, -1, true),
@@ -238,7 +232,6 @@ class Analyzer extends Test\Integration\Suite
                 $tokens   = ['default' => ['foo' => 'bar', 'baz' => 'qux']],
                 $ruleA    = '<foo> | <baz>',
                 $analyzer = new SUT($tokens),
-
                 $_ruleA = new Rule\Choice('ruleA', [0, 1], null),
                 $_ruleA->setPPRepresentation($ruleA),
                 $_rule0 = new Rule\Token(0, 'foo', null, -1, true),
@@ -262,7 +255,6 @@ class Analyzer extends Test\Integration\Suite
                 $ruleA    = '<foo>+ | ruleB() ::foo::',
                 $ruleB    = '<baz> ruleA()',
                 $analyzer = new SUT($tokens),
-
                 $_rule0 = new Rule\Token(0, 'foo', null, -1, true),
                 $_rule1 = new Rule\Repetition('1', 1, -1, '0', null),
                 $_rule2 = new Rule\Token(2, 'foo', null, -1, false),

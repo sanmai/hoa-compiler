@@ -350,7 +350,7 @@ abstract class Llk
 
             while ($i < $m &&
                    isset($lines[$i][0]) &&
-                   (' '  === $lines[$i][0] ||
+                   (' ' === $lines[$i][0] ||
                     "\t" === $lines[$i][0] ||
                     '//' === substr($lines[$i], 0, 2))) {
                 if ('//' === substr($lines[$i], 0, 2)) {

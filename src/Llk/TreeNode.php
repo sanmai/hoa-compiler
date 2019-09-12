@@ -217,7 +217,7 @@ class TreeNode implements Visitor\Element
      * @param   \Hoa\Compiler\Llk\TreeNode  $child    Child.
      * @return  \Hoa\Compiler\Llk\TreeNode
      */
-    public function prependChild(TreeNode $child)
+    public function prependChild(self $child)
     {
         array_unshift($this->_children, $child);
 
@@ -230,7 +230,7 @@ class TreeNode implements Visitor\Element
      * @param   \Hoa\Compiler\Llk\TreeNode  $child    Child.
      * @return  \Hoa\Compiler\Llk\TreeNode
      */
-    public function appendChild(TreeNode $child)
+    public function appendChild(self $child)
     {
         $this->_children[] = $child;
 
@@ -302,7 +302,7 @@ class TreeNode implements Visitor\Element
      * @param   \Hoa\Compiler\Llk\TreeNode  $parent    Parent.
      * @return  \Hoa\Compiler\Llk\TreeNode
      */
-    public function setParent(TreeNode $parent)
+    public function setParent(self $parent)
     {
         $old           = $this->_parent;
         $this->_parent = $parent;
