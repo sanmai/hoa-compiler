@@ -49,7 +49,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Hoa\\Compiler\\Test\\": "tests/"
+            "Hoa\\Compiler\\Test\\": "atoum/"
         }
     },
     "extra": {

@@ -22,4 +22,4 @@ install:
   - composer install --prefer-dist
 
 script:
-  - vendor/bin/atoum -ncc -d tests/
+  - vendor/bin/atoum -ncc -d atoum/
