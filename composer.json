@@ -43,7 +43,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Hoa\\Compiler\\": "."
+            "Hoa\\Compiler\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Hoa\\Compiler\\Test\\": "tests/"
         }
     },
     "extra": {
