@@ -33,11 +33,20 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-namespace Hoa\Compiler\Llk\Rule;
+namespace Tests\Hoa\Compiler\Unit\Llk\Rule;
+
+use Tests\Hoa\Compiler\TestCase;
 
 /**
- * The choice rule.
+ * @covers \Hoa\Compiler\Llk\Rule\Choice
+ * @uses \Hoa\Compiler\Llk\Rule\Rule
  */
-final class Choice extends Rule
+class ChoiceTest extends TestCase
 {
+    public function test_case_is_a_rule()
+    {
+        $result = new \Hoa\Compiler\Llk\Rule\Choice('foo', ['bar']);
+
+        $this->assertInstanceOf(\Hoa\Compiler\Llk\Rule::class, $result);
+    }
 }
