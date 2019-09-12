@@ -473,9 +473,9 @@ abstract class Ll1
             while (array_key_exists($nextToken, $this->_actions[$c][$nextState]) &&
                      (
                          (
-                            is_array($this->_actions[$c][$nextState][$nextToken]) &&
+                             is_array($this->_actions[$c][$nextState][$nextToken]) &&
                             0 < $foo = $this->_actions[$c][$nextState][$nextToken][0]
-                        ) ||
+                         ) ||
                         (
                             is_int($this->_actions[$c][$nextState][$nextToken]) &&
                             0 < $foo = $this->_actions[$c][$nextState][$nextToken]

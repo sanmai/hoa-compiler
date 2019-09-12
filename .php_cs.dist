@@ -3,6 +3,11 @@
 declare(strict_types=1);
 
 $header = <<<'EOF'
+Hoa
+
+
+@license
+
 New BSD License
 
 Copyright © 2007-2017, Hoa community. All rights reserved.
@@ -35,6 +40,7 @@ return PhpCsFixer\Config::create()
     ->setRiskyAllowed(true)
     ->setRules([
         '@PSR2'                              => true,
+        'header_comment'                     => ['commentType' => 'PHPDoc', 'header' => $header, 'separate' => 'bottom', 'location' => 'after_open'],
         'binary_operator_spaces'             => ['align_double_arrow' => true, 'align_equals' => true],
         'blank_line_after_opening_tag'       => true,
         'concat_space'                       => ['spacing' => 'one'],
@@ -47,6 +53,7 @@ return PhpCsFixer\Config::create()
         'cast_spaces'                        => true,
         'no_unused_imports'                  => true,
         'no_whitespace_in_blank_line'        => true,
+
     ])
     ->setFinder(
         PhpCsFixer\Finder::create()
