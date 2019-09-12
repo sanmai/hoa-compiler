@@ -22,4 +22,4 @@ install:
   - composer install --prefer-dist
 
 script:
-  - vendor/bin/hoa test:run
+  - vendor/bin/atoum -ncc -d tests/
