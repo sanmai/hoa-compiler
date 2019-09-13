@@ -39,8 +39,10 @@ use Tests\Hoa\Compiler\TestCase;
 
 final class AtoumLikeTester
 {
+    /** @var AtoumLikeTester */
+    public $then;
+
     /**
-     *
      * @var TestCase
      */
     private $testCase;
@@ -50,9 +52,20 @@ final class AtoumLikeTester
     public function __construct(TestCase $testCase)
     {
         $this->testCase = $testCase;
+        $this->then     = $this;
     }
 
     public function let(): self
+    {
+        return $this;
+    }
+
+    public function given(): self
+    {
+        return $this;
+    }
+
+    public function when(): self
     {
         return $this;
     }
@@ -91,11 +104,33 @@ final class AtoumLikeTester
         return $this;
     }
 
+    public function array($result): self
+    {
+        $this->context = $result;
+
+        $this->testCase->assertIsArray($result);
+
+        return $this;
+    }
+
     public function object($result): self
     {
         $this->context = $result;
 
         $this->testCase->assertIsObject($result);
+
+        return $this;
+    }
+
+    public function exception(callable $callback): self
+    {
+        try {
+            $callback();
+
+            $this->fail("No exception was thrown.");
+        } catch (\Exception $e) {
+            $this->context = $e;
+        }
 
         return $this;
     }
@@ -138,6 +173,14 @@ final class AtoumLikeTester
     public function isInstanceOf($expected): self
     {
         $this->testCase->assertInstanceOf($expected, $this->context);
+
+        return $this;
+    }
+
+    public function hasMessage($expected): self
+    {
+        assert($this->context instanceof \Exception);
+        $this->testCase->assertSame($expected, $this->context->getMessage());
 
         return $this;
     }

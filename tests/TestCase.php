@@ -41,18 +41,13 @@ use Tests\Hoa\Compiler\Common\AtoumLikeTester;
 
 abstract class TestCase extends \PHPUnit\Framework\TestCase
 {
-    /** @var AtoumLikeTester */
-    protected $then;
-
     final protected function given()
     {
-        return $this;
+        return new AtoumLikeTester($this);
     }
 
     final protected function when()
     {
-        $this->then = new AtoumLikeTester($this);
-
-        return $this;
+        return new AtoumLikeTester($this);
     }
 }
