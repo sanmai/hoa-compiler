@@ -37,7 +37,6 @@ namespace Tests\Hoa\Compiler\Unit\Llk\Rule;
 
 use Hoa\Compiler as LUT;
 use Hoa\Compiler\Llk\Rule\Repetition as SUT;
-use Hoa\Test;
 use Tests\Hoa\Compiler\TestCase;
 
 /**

@@ -36,7 +36,6 @@
 namespace Tests\Hoa\Compiler\Unit\Llk\Rule;
 
 use Hoa\Compiler\Llk\Rule\Rule;
-use Hoa\Test;
 use Tests\Hoa\Compiler\TestCase;
 
 /**
