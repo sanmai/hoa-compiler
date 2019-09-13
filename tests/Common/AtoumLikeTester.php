@@ -145,6 +145,24 @@ final class AtoumLikeTester
         return $this;
     }
 
+    public function isIdenticalTo($value): self
+    {
+        $this->testCase->assertSame($value, $this->context);
+
+        return $this;
+    }
+
+    /**
+     * @deprecated shall not be used in tests unless unavoidable
+     */
+    public function isRoughlyEqualTo($value): self
+    {
+        $this->testCase->assertEquals($value, $this->context);
+
+        return $this;
+    }
+
+
     public function isFalse(): self
     {
         $this->testCase->assertFalse($this->context);
@@ -169,6 +187,13 @@ final class AtoumLikeTester
     public function isZero(): self
     {
         $this->testCase->assertEquals(0, $this->context);
+
+        return $this;
+    }
+
+    public function isEmpty(): self
+    {
+        $this->testCase->assertEmpty($this->context);
 
         return $this;
     }
