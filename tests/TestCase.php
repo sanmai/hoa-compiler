@@ -37,6 +37,22 @@ declare(strict_types=1);
 
 namespace Tests\Hoa\Compiler;
 
+use Tests\Hoa\Compiler\Common\AtoumLikeTester;
+
 abstract class TestCase extends \PHPUnit\Framework\TestCase
 {
+    /** @var AtoumLikeTester */
+    protected $then;
+
+    final protected function given()
+    {
+        return $this;
+    }
+
+    final protected function when()
+    {
+        $this->then = new AtoumLikeTester($this);
+
+        return $this;
+    }
 }
