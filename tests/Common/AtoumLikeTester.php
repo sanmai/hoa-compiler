@@ -212,4 +212,18 @@ final class AtoumLikeTester
 
         return $this;
     }
+
+    public function executeOnFailure(callable $callback): self
+    {
+        return $this;
+    }
+
+    public function __call($method_name, $args)
+    {
+        if (method_exists($this->testCase, $method_name)) {
+            return call_user_func_array([$this->testCase, $method_name], $args);
+        }
+
+        throw new \Error(sprintf("Call to undefined method %s::%s()", static::class, $method_name));
+    }
 }

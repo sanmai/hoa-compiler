@@ -49,8 +49,12 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
         return new AtoumLikeTester($this);
     }
 
-    final protected function when(): AtoumLikeTester
+    final protected function when($argument = null): AtoumLikeTester
     {
+        if ($argument instanceof \Closure) {
+            call_user_func($argument);
+        }
+
         return new AtoumLikeTester($this);
     }
 
@@ -68,6 +72,6 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
             return;
         }
 
-        $this->markTestIncomplete("$method is not available in this version of PHPUnit");
+        $this->markTestIncomplete(sprintf("%s::%s() is not available in this version of PHPUnit", static::class, $method));
     }
 }
