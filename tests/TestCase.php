@@ -50,4 +50,21 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
     {
         return new AtoumLikeTester($this);
     }
+
+    /**
+     * PHPUnit 6.5 / PHP 7.0 adapter.
+     *
+     * @param string $method
+     * @param array $args
+     */
+    final public function __call($method, $args)
+    {
+        if (strpos($method, 'assertIs') === 0) {
+            $this->assertInternalType(strtolower(substr($method, strlen('assertIs'))), ...$args);
+
+            return;
+        }
+
+        $this->markTestIncomplete("$method is not available in this version of PHPUnit");
+    }
 }
