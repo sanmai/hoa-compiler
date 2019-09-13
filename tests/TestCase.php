@@ -41,12 +41,12 @@ use Tests\Hoa\Compiler\Common\AtoumLikeTester;
 
 abstract class TestCase extends \PHPUnit\Framework\TestCase
 {
-    final protected function given()
+    final protected function given(): AtoumLikeTester
     {
         return new AtoumLikeTester($this);
     }
 
-    final protected function when()
+    final protected function when(): AtoumLikeTester
     {
         return new AtoumLikeTester($this);
     }
