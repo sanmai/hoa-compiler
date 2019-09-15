@@ -22,5 +22,8 @@ install:
   - composer install --prefer-dist
 
 script:
-  - vendor/bin/phpunit
+  - vendor/bin/phpunit --coverage-clover build/logs/clover.xml
   - vendor/bin/atoum -ncc -d atoum/
+
+after_success:
+  - travis_retry php vendor/bin/php-coveralls -v
