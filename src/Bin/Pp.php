@@ -48,6 +48,8 @@ use Hoa\File;
  *
  * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
+ *
+ * @codeCoverageIgnore
  */
 class Pp extends Console\Dispatcher\Kit
 {
