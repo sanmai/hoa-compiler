@@ -39,7 +39,6 @@
 namespace Hoa\Compiler\Llk\Sampler;
 
 use Hoa\Compiler;
-use Hoa\Iterator;
 use Hoa\Visitor;
 
 /**
