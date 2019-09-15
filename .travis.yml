@@ -18,12 +18,12 @@ cache:
     - build/cache
 
 install:
-  - phpenv config-rm xdebug.ini || true
   - composer install --prefer-dist
   - pecl install pcov || true
 
 script:
   - vendor/bin/phpunit --coverage-clover build/logs/clover.xml
+  - phpenv config-rm xdebug.ini || true
   - vendor/bin/atoum -ncc -d atoum/
 
 after_success:
