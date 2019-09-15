@@ -40,6 +40,8 @@ namespace Tests\Hoa\Compiler\Unit\Llk\Rule;
 
 use Hoa\Compiler as LUT;
 use Hoa\Compiler\Llk\Rule\Token as SUT;
+use Hoa\File;
+use Hoa\Regex;
 use Tests\Hoa\Compiler\TestCase;
 
 /**
@@ -229,6 +231,10 @@ class TokenTest extends TestCase
      */
     public function case_get_ast()
     {
+        if (!class_exists(File\Read::class) || !class_exists(Regex\Visitor\Isotropic::class)) {
+            $this->markTestIncomplete();
+        }
+
         $this
             ->given(
                 $name           = 'foo',
