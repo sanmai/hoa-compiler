@@ -180,6 +180,14 @@ class SoundnessTest extends TestCase
 
     protected function getRegexSampler()
     {
+        if (!class_exists(Regex\Visitor\Isotropic::class)) {
+            $this->markTestSkipped(sprintf("%s is not loaded", Regex\Visitor\Isotropic::class));
+        }
+
+        if (!class_exists(Math\Sampler\Random::class)) {
+            $this->markTestSkipped(sprintf("%s is not loaded", Math\Sampler\Random::class));
+        }
+
         return new Regex\Visitor\Isotropic(new Math\Sampler\Random());
     }
 }
