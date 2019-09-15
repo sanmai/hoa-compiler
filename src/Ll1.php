@@ -307,22 +307,6 @@ abstract class Ll1
     protected $column               = 0;
 
     /**
-     * Cache compiling result.
-     *
-     * @var array
-     */
-    protected static $_cache        = [];
-
-    /**
-     * Whether cache is enabled or not.
-     *
-     * @var bool
-     */
-    protected static $_cacheEnabled = true;
-
-
-
-    /**
      * Singleton, and set parameters.
      *
      * @param   array   $skip           Skip.
@@ -363,13 +347,6 @@ abstract class Ll1
      */
     public function compile($in)
     {
-        $cacheId = md5($in);
-
-        if (true === self::$_cacheEnabled &&
-            true === array_key_exists($cacheId, self::$_cache)) {
-            return self::$_cache[$cacheId];
-        }
-
         $d             = 0;
         $c             = 0; // current automata.
         $_skip         = array_flip($this->_skip);
@@ -408,11 +385,6 @@ abstract class Ll1
                     true === $this->end()) {
 
                     //echo '*********** END REACHED **********' . "\n";
-
-                    if (true === self::$_cacheEnabled) {
-                        self::$_cache[$cacheId] = $this->getResult();
-                    }
-
                     return true;
                 }
 
@@ -891,32 +863,6 @@ abstract class Ll1
     public function getNames()
     {
         return $this->_names;
-    }
-
-    /**
-     * Enable cache
-     *
-     * @return  bool
-     */
-    public static function enableCache()
-    {
-        $old                 = self::$_cacheEnabled;
-        self::$_cacheEnabled = true;
-
-        return $old;
-    }
-
-    /**
-     * Disable cache
-     *
-     * @return  bool
-     */
-    public static function disableCache()
-    {
-        $old                 = self::$_cacheEnabled;
-        self::$_cacheEnabled = false;
-
-        return $old;
     }
 
     /**
