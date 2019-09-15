@@ -47,6 +47,7 @@ use Tests\Hoa\Compiler\TestCase;
  *
  * @covers \Hoa\Compiler\Llk\Rule\Token
  * @uses \Hoa\Compiler\Llk\Rule
+ * @uses \Hoa\Compiler\Llk\Rule\Analyzer
  * @uses \Hoa\Compiler\Llk\Rule\Repetition
  * @uses \Hoa\Compiler\Llk\Lexer
  * @uses \Hoa\Compiler\Llk
