@@ -38,8 +38,6 @@
 
 namespace Hoa\Compiler\Llk\Rule;
 
-use Hoa\Consistency;
-
 /**
  * Class \Hoa\Compiler\Llk\Rule.
  *
@@ -290,8 +288,3 @@ abstract class Rule
         return $this->_transitional;
     }
 }
-
-/**
- * Flex entity.
- */
-Consistency::flexEntity('Hoa\Compiler\Llk\Rule\Rule');

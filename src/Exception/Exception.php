@@ -38,7 +38,6 @@
 
 namespace Hoa\Compiler\Exception;
 
-use Hoa\Consistency;
 use Hoa\Exception as HoaException;
 
 /**
@@ -53,7 +52,3 @@ class Exception extends HoaException
 {
 }
 
-/**
- * Flex entity.
- */
-Consistency::flexEntity('Hoa\Compiler\Exception\Exception');

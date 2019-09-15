@@ -39,7 +39,6 @@
 namespace Hoa\Compiler\Llk\Sampler;
 
 use Hoa\Compiler;
-use Hoa\Consistency;
 use Hoa\Visitor;
 
 /**
@@ -231,8 +230,3 @@ abstract class Sampler
         return $out;
     }
 }
-
-/**
- * Flex entity.
- */
-Consistency::flexEntity('Hoa\Compiler\Llk\Sampler\Sampler');

@@ -39,7 +39,6 @@
 namespace Hoa\Compiler\Llk;
 
 use Hoa\Compiler;
-use Hoa\Consistency;
 use Hoa\Stream;
 
 /**
@@ -378,8 +377,3 @@ abstract class Llk
         return;
     }
 }
-
-/**
- * Flex entity.
- */
-Consistency::flexEntity('Hoa\Compiler\Llk\Llk');
