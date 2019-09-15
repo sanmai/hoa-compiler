@@ -46,6 +46,7 @@ use Tests\Hoa\Compiler\TestCase;
  * Test suite of the rule exception.
  *
  * @covers \Hoa\Compiler\Exception\Rule
+ * @uses \Hoa\Compiler\Exception
  */
 class RuleTest extends TestCase
 {

@@ -46,6 +46,7 @@ use Tests\Hoa\Compiler\TestCase;
  * Test suite of the lexer exception.
  *
  * @covers \Hoa\Compiler\Exception\Lexer
+ * @uses \Hoa\Compiler\Exception
  */
 class LexerTest extends TestCase
 {

@@ -46,6 +46,7 @@ use Tests\Hoa\Compiler\TestCase;
  * Test suite of the illegal token exception.
  *
  * @covers \Hoa\Compiler\Exception\IllegalToken
+ * @uses \Hoa\Compiler\Exception
  */
 class IllegalTokenTest extends TestCase
 {

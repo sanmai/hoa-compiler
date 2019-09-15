@@ -46,6 +46,7 @@ use Tests\Hoa\Compiler\TestCase;
  * Test suite of the sampler exception.
  *
  * @covers \Hoa\Compiler\Llk\Sampler\Exception
+ * @uses \Hoa\Compiler\Exception
  */
 class ExceptionTest extends TestCase
 {

@@ -46,6 +46,7 @@ use Tests\Hoa\Compiler\TestCase;
  * Test suite of the lexer state exception.
  *
  * @covers \Hoa\Compiler\Exception\FinalStateHasNotBeenReached
+ * @uses \Hoa\Compiler\Exception
  */
 class FinalStateHasNotBeenReachedTest extends TestCase
 {

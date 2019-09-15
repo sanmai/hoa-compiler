@@ -47,6 +47,7 @@ use Tests\Hoa\Compiler\TestCase;
  *
  * @covers \Hoa\Compiler\Llk\Rule\Repetition
  * @uses \Hoa\Compiler\Llk\Rule
+ * @uses \Hoa\Compiler\Exception
  */
 class RepetitionTest extends TestCase
 {

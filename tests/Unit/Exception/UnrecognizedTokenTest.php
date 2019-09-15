@@ -46,6 +46,7 @@ use Tests\Hoa\Compiler\TestCase;
  * Test suite of the unrecognized token exception.
  *
  * @covers \Hoa\Compiler\Exception\UnrecognizedToken
+ * @uses \Hoa\Compiler\Exception
  */
 class UnrecognizedTokenTest extends TestCase
 {

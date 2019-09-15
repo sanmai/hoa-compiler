@@ -47,6 +47,7 @@ use Tests\Hoa\Compiler\TestCase;
  *
  * @covers \Hoa\Compiler\Llk\Lexer
  * @uses \Hoa\Compiler\Exception\UnrecognizedToken
+ * @uses \Hoa\Compiler\Exception
  */
 class LexerTest extends TestCase
 {

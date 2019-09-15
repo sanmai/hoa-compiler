@@ -51,6 +51,7 @@ use Tests\Hoa\Compiler\TestCase;
  * @uses \Hoa\Compiler\Llk\Rule
  * @uses \Hoa\Compiler\Llk\Rule\Token
  * @uses \Hoa\Compiler\Llk\Rule\Repetition
+ * @uses \Hoa\Compiler\Exception
  */
 class AnalyzerTest extends TestCase
 {

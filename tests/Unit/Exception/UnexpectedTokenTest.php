@@ -47,6 +47,7 @@ use Tests\Hoa\Compiler\TestCase;
  *
  * @covers \Hoa\Compiler\Exception\UnexpectedToken
  * @uses \Hoa\Compiler\Exception\UnrecognizedToken
+ * @uses \Hoa\Compiler\Exception
  */
 class UnexpectedTokenTest extends TestCase
 {
