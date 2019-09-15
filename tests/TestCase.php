@@ -59,6 +59,17 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
     }
 
     /**
+     * Returns a call proxying wrapper to let the caller invoke protected methods. We don't do that yet.
+     *
+     * @param object $object
+     * @return object
+     */
+    final protected function invoke($object)
+    {
+        return $object;
+    }
+
+    /**
      * PHPUnit 6.5 / PHP 7.0 adapter.
      *
      * @param string $method

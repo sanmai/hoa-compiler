@@ -38,7 +38,7 @@
 
 namespace Tests\Hoa\Compiler\Unit\Llk\Rule;
 
-use Hoa\Compiler\Llk\Rule\Rule;
+use Hoa\Compiler\Llk\Rule\Rule as SUT;
 use Tests\Hoa\Compiler\TestCase;
 
 /**
@@ -48,215 +48,375 @@ use Tests\Hoa\Compiler\TestCase;
  */
 class RuleTest extends TestCase
 {
-    private function makeRule(...$args): Rule
+    private function makeRule(...$args): SUT
     {
-        return new class(...$args) extends Rule {
-            public function setChildrenProxy(...$args)
+        return new class(...$args) extends SUT {
+            public function __call($method_name, $args)
             {
-                return parent::setChildren(...$args);
+                if (method_exists($this, $method_name)) {
+                    return $this->$method_name(...$args);
+                }
             }
         };
     }
 
-    public function test_constructor()
+
+    /**
+     * @test
+     */
+    public function case_constructor()
     {
-        $name     = 'foo';
-        $children = ['bar'];
-
-        $result = $this->makeRule($name, $children);
-
-        $this->assertSame($name, $result->getName());
-        $this->assertSame($children, $result->getChildren());
-        $this->assertNull($result->getNodeId());
-        $this->assertTrue($result->isTransitional());
+        $this
+            ->given(
+                $name     = 'foo',
+                $children = ['bar']
+            )
+            ->when($result = $this->makeRule($name, $children))
+            ->then
+                ->string($result->getName())
+                    ->isEqualTo($name)
+                ->array($result->getChildren())
+                    ->isEqualTo($children)
+                ->variable($result->getNodeId())
+                    ->isNull()
+                ->boolean($result->isTransitional())
+                    ->isTrue();
     }
 
-    public function test_constructor_with_node_id()
+    /**
+     * @test
+     */
+    public function case_constructor_with_node_id()
     {
-        $name     = 'foo';
-        $children = ['bar'];
-        $nodeId   = 'baz';
-
-        $result = $this->makeRule($name, $children, $nodeId);
-
-        $this->assertSame($name, $result->getName());
-        $this->assertSame($children, $result->getChildren());
-        $this->assertSame($nodeId, $result->getNodeId());
-        $this->assertTrue($result->isTransitional());
+        $this
+            ->given(
+                $name     = 'foo',
+                $children = ['bar'],
+                $nodeId   = 'baz'
+            )
+            ->when($result = $this->makeRule($name, $children, $nodeId))
+            ->then
+                ->string($result->getName())
+                    ->isEqualTo($name)
+                ->array($result->getChildren())
+                    ->isEqualTo($children)
+                ->string($result->getNodeId())
+                    ->isEqualTo($nodeId)
+                ->boolean($result->isTransitional())
+                    ->isTrue();
     }
 
-    public function test_set_name_returns_old_name()
+    /**
+     * @test
+     */
+    public function case_set_name()
     {
-        $name     = 'foo';
-        $children = ['bar'];
-
-        $rule = $this->makeRule($name, $children);
-        $this->assertSame($name, $rule->setName('baz'));
+        $this
+            ->given(
+                $name     = 'foo',
+                $children = ['bar'],
+                $rule     = $this->makeRule($name, $children)
+            )
+            ->when($result = $rule->setName('baz'))
+            ->then
+                ->string($result)
+                    ->isEqualTo($name);
     }
 
-    public function test_get_name()
+    /**
+     * @test
+     */
+    public function case_get_name()
     {
-        $name     = 'foo';
-        $children = ['bar'];
-
-        $rule = $this->makeRule($name, $children);
-        $this->assertSame($name, $rule->getName());
+        $this
+            ->given(
+                $name     = 'baz',
+                $children = ['bar'],
+                $rule     = $this->makeRule('foo', $children),
+                $rule->setName($name)
+            )
+            ->when($result = $rule->getName())
+            ->then
+                ->string($result)
+                    ->isEqualTo($name);
     }
 
-    public function test_set_children()
+    /**
+     * @test
+     */
+    public function case_set_children()
     {
-        $name     = 'foo';
-        $children = ['bar'];
-        $rule     = $this->makeRule($name, $children);
-        $this->assertSame(['bar'], $rule->setChildrenProxy(['baz']));
+        $this
+            ->given(
+                $name     = 'foo',
+                $children = ['bar'],
+                $rule     = $this->makeRule($name, $children)
+            )
+            ->when($result = $this->invoke($rule)->setChildren(['baz']))
+            ->then
+                ->array($result)
+                    ->isEqualTo($children);
     }
 
-    public function test_get_children()
+    /**
+     * @test
+     */
+    public function case_get_children()
     {
-        $name     = 'foo';
-        $children = ['bar'];
-        $rule     = $this->makeRule($name, $children);
-
-        $children = ['bar'];
-        $rule->setChildrenProxy($children);
-        $this->assertSame($children, $rule->getChildren());
+        $this
+            ->given(
+                $name     = 'foo',
+                $children = ['baz'],
+                $rule     = $this->makeRule($name, ['bar']),
+                $this->invoke($rule)->setChildren($children)
+            )
+            ->when($result = $rule->getChildren())
+            ->then
+                ->array($result)
+                    ->isEqualTo($children);
     }
 
-    public function test_set_node_id()
+    /**
+     * @test
+     */
+    public function case_set_node_id()
     {
-        $name        = 'foo';
-        $children    = ['bar'];
-        $nodeId      = 'id';
-        $rule        = $this->makeRule($name, $children, $nodeId);
-
-        $this->assertSame($nodeId, $rule->setNodeId('baz:qux'));
+        $this
+            ->given(
+                $name        = 'foo',
+                $children    = ['bar'],
+                $nodeId      = 'id',
+                $rule        = $this->makeRule($name, $children, $nodeId)
+            )
+            ->when($result = $rule->setNodeId('baz:qux'))
+            ->then
+                ->string($result)
+                    ->isEqualTo($nodeId);
     }
 
-    public function test_get_node_id()
+    /**
+     * @test
+     */
+    public function case_get_node_id()
     {
-        $name     = 'foo';
-        $children = ['bar'];
-        $rule     = $this->makeRule($name, $children);
-        $rule->setNodeId('baz');
-
-        $this->assertSame('baz', $rule->getNodeId());
+        $this
+            ->given(
+                $name     = 'foo',
+                $children = ['bar'],
+                $rule     = $this->makeRule($name, $children),
+                $rule->setNodeId('baz')
+            )
+            ->when($result = $rule->getNodeId())
+            ->then
+                ->string($result)
+                    ->isEqualTo('baz');
     }
 
-    public function test_get_node_id_with_options()
+    /**
+     * @test
+     */
+    public function case_get_node_id_with_options()
     {
-        $name     = 'foo';
-        $children = ['bar'];
-        $rule     = $this->makeRule($name, $children);
-        $rule->setNodeId('baz:qux');
-
-        $this->assertSame('baz', $rule->getNodeId());
+        $this
+            ->given(
+                $name     = 'foo',
+                $children = ['bar'],
+                $rule     = $this->makeRule($name, $children),
+                $rule->setNodeId('baz:qux')
+            )
+            ->when($result = $rule->getNodeId())
+            ->then
+                ->string($result)
+                    ->isEqualTo('baz');
     }
 
-    public function test_get_node_options_empty()
+    /**
+     * @test
+     */
+    public function case_get_node_options_empty()
     {
-        $name     = 'foo';
-        $children = ['bar'];
-        $rule     = $this->makeRule($name, $children);
-        $rule->setNodeId('baz');
-
-        $this->assertSame([], $rule->getNodeOptions());
+        $this
+            ->given(
+                $name     = 'foo',
+                $children = ['bar'],
+                $rule     = $this->makeRule($name, $children),
+                $rule->setNodeId('baz')
+            )
+            ->when($result = $rule->getNodeOptions())
+            ->then
+                ->array($result)
+                    ->isEmpty();
     }
 
-    public function test_get_node_options()
+    /**
+     * @test
+     */
+    public function case_get_node_options()
     {
-        $name     = 'foo';
-        $children = ['bar'];
-        $rule     = $this->makeRule($name, $children);
-        $rule->setNodeId('baz:qux');
-
-        $this->assertSame(['q', 'u', 'x'], $rule->getNodeOptions());
+        $this
+            ->given(
+                $name     = 'foo',
+                $children = ['bar'],
+                $rule     = $this->makeRule($name, $children),
+                $rule->setNodeId('baz:qux')
+            )
+            ->when($result = $rule->getNodeOptions())
+            ->then
+                ->array($result)
+                    ->isEqualTo(['q', 'u', 'x']);
     }
 
-    public function test_set_default_id()
+    /**
+     * @test
+     */
+    public function case_set_default_id()
     {
-        $name        = 'foo';
-        $children    = ['bar'];
-        $nodeId      = 'id';
-        $rule        = $this->makeRule($name, $children, $nodeId);
-
-        $this->assertNull($rule->setDefaultId('baz:qux'));
+        $this
+            ->given(
+                $name        = 'foo',
+                $children    = ['bar'],
+                $nodeId      = 'id',
+                $rule        = $this->makeRule($name, $children, $nodeId)
+            )
+            ->when($result = $rule->setDefaultId('baz:qux'))
+            ->then
+                ->variable($result)
+                    ->isNull();
     }
 
-    public function test_get_default_id()
+    /**
+     * @test
+     */
+    public function case_get_default_id()
     {
-        $name     = 'foo';
-        $children = ['bar'];
-        $rule     = $this->makeRule($name, $children);
-        $rule->setDefaultId('baz');
-
-        $this->assertSame('baz', $rule->getDefaultId());
+        $this
+            ->given(
+                $name     = 'foo',
+                $children = ['bar'],
+                $rule     = $this->makeRule($name, $children),
+                $rule->setDefaultId('baz')
+            )
+            ->when($result = $rule->getDefaultId())
+            ->then
+                ->string($result)
+                    ->isEqualTo('baz');
     }
 
-    public function test_get_default_id_with_options()
+    /**
+     * @test
+     */
+    public function case_get_default_id_with_options()
     {
-        $name     = 'foo';
-        $children = ['bar'];
-        $rule     = $this->makeRule($name, $children);
-        $rule->setDefaultId('baz:qux');
-
-        $this->assertSame('baz', $rule->getDefaultId());
+        $this
+            ->given(
+                $name     = 'foo',
+                $children = ['bar'],
+                $rule     = $this->makeRule($name, $children),
+                $rule->setDefaultId('baz:qux')
+            )
+            ->when($result = $rule->getDefaultId())
+            ->then
+                ->string($result)
+                    ->isEqualTo('baz');
     }
 
-    public function test_get_default_options_empty()
+    /**
+     * @test
+     */
+    public function case_get_default_options_empty()
     {
-        $name     = 'foo';
-        $children = ['bar'];
-        $rule     = $this->makeRule($name, $children);
-        $rule->setDefaultId('baz');
-
-        $this->assertSame([], $rule->getDefaultOptions());
+        $this
+            ->given(
+                $name     = 'foo',
+                $children = ['bar'],
+                $rule     = $this->makeRule($name, $children),
+                $rule->setDefaultId('baz')
+            )
+            ->when($result = $rule->getDefaultOptions())
+            ->then
+                ->array($result)
+                    ->isEmpty();
     }
 
-    public function test_get_default_options()
+    /**
+     * @test
+     */
+    public function case_get_default_options()
     {
-        $name     = 'foo';
-        $children = ['bar'];
-        $rule     = $this->makeRule($name, $children);
-        $rule->setDefaultId('baz:qux');
-
-        $this->assertSame(['q', 'u', 'x'], $rule->getDefaultOptions());
+        $this
+            ->given(
+                $name     = 'foo',
+                $children = ['bar'],
+                $rule     = $this->makeRule($name, $children),
+                $rule->setDefaultId('baz:qux')
+            )
+            ->when($result = $rule->getDefaultOptions())
+            ->then
+                ->array($result)
+                    ->isEqualTo(['q', 'u', 'x']);
     }
 
-    public function test_set_pp_representation()
+    /**
+     * @test
+     */
+    public function case_set_pp_representation()
     {
-        $name              = 'foo';
-        $children          = ['bar'];
-        $pp                = '<a> ::b:: c()?';
-        $rule              = $this->makeRule($name, $children);
-        $oldIsTransitional = $rule->isTransitional();
-
-        $this->assertNull($rule->setPPRepresentation($pp));
-        $this->assertTrue($oldIsTransitional);
-
-        $this->assertFalse($rule->isTransitional());
+        $this
+            ->given(
+                $name              = 'foo',
+                $children          = ['bar'],
+                $pp                = '<a> ::b:: c()?',
+                $rule              = $this->makeRule($name, $children),
+                $oldIsTransitional = $rule->isTransitional()
+            )
+            ->when($result = $rule->setPPRepresentation($pp))
+            ->then
+                ->variable($result)
+                    ->isNull()
+                ->boolean($oldIsTransitional)
+                    ->isTrue()
+                ->boolean($rule->isTransitional())
+                    ->isFalse();
     }
 
-    public function test_get_pp_representation()
+    /**
+     * @test
+     */
+    public function case_get_pp_representation()
     {
-        $name     = 'foo';
-        $children = ['bar'];
-        $pp       = '<a> ::b:: c()?';
-        $rule     = $this->makeRule($name, $children);
-        $rule->setPPRepresentation($pp);
-
-        $this->assertSame($pp, $rule->getPPRepresentation());
+        $this
+            ->given(
+                $name     = 'foo',
+                $children = ['bar'],
+                $pp       = '<a> ::b:: c()?',
+                $rule     = $this->makeRule($name, $children),
+                $rule->setPPRepresentation($pp)
+            )
+            ->when($result = $rule->getPPRepresentation())
+            ->then
+                ->string($result)
+                    ->isEqualTo($pp);
     }
 
-    public function test_is_transitional()
+    /**
+     * @test
+     */
+    public function case_is_transitional()
     {
-        $name              = 'foo';
-        $children          = ['bar'];
-        $pp                = '<a> ::b:: c()?';
-        $rule              = $this->makeRule($name, $children);
-        $oldIsTransitional = $rule->isTransitional();
-        $rule->setPPRepresentation($pp);
-
-        $this->assertTrue($oldIsTransitional);
-        $this->assertFalse($rule->isTransitional());
+        $this
+            ->given(
+                $name              = 'foo',
+                $children          = ['bar'],
+                $pp                = '<a> ::b:: c()?',
+                $rule              = $this->makeRule($name, $children),
+                $oldIsTransitional = $rule->isTransitional(),
+                $rule->setPPRepresentation($pp)
+            )
+            ->when($result = $rule->isTransitional())
+            ->then
+                ->boolean($oldIsTransitional)
+                    ->isTrue()
+                ->boolean($result)
+                    ->isFalse();
     }
 }
