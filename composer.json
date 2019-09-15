@@ -1,45 +1,40 @@
 {
-    "name"       : "hoa/compiler",
+    "name": "sanmai/hoa-compiler",
+    "type": "library",
     "description": "The Hoa\\Compiler library.",
-    "type"       : "library",
-    "keywords"   : ["library", "compiler", "grammar", "language", "ll1",
-                    "llk", "regular", "algebraic", "context-free", "lexer",
-                    "parser", "token", "rule", "pp", "ast", "trace", "syntax",
-                    "sampler", "isotropic", "random", "uniform", "exhaustive",
-                    "coverage"],
-    "homepage"   : "https://hoa-project.net/",
-    "license"    : "BSD-3-Clause",
-    "authors"    : [
+    "license": "BSD-3-Clause",
+    "authors": [
         {
-            "name" : "Ivan Enderlin",
-            "email": "ivan.enderlin@hoa-project.net"
+            "name": "Ivan Enderlin"
         },
         {
-            "name"    : "Hoa community",
-            "homepage": "https://hoa-project.net/"
+            "name": "Hoa community"
         }
     ],
-    "support": {
-        "email" : "support@hoa-project.net",
-        "irc"   : "irc://chat.freenode.net/hoaproject",
-        "forum" : "https://users.hoa-project.net/",
-        "docs"  : "https://central.hoa-project.net/Documentation/Library/Compiler",
-        "source": "https://central.hoa-project.net/Resource/Library/Compiler"
-    },
     "require": {
-        "php"            : ">=7.0",
-        "hoa/iterator": "^2",
-        "hoa/visitor": "^2"
+        "php": "^7.0",
+        "hoa/iterator": "*",
+        "hoa/visitor": "*"
+    },
+    "replace": {
+        "hoa/compiler": "3.17.08.08"
     },
     "require-dev": {
-        "phpunit/phpunit": ">=6 <8",
+        "atoum/atoum": "^3",
+        "atoum/stubs": "*",
         "friendsofphp/php-cs-fixer": "^2.15",
-        "php-coveralls/php-coveralls": "^2.1",
-        "hoa/regex": "^1",
-        "hoa/file": "^1",
+        "hoa/console": "^3",
+        "hoa/file": "*",
         "hoa/json": "^2",
+        "hoa/regex": "^1",
         "hoa/test": "^2",
-        "hoa/console": "^3.17"
+        "php-coveralls/php-coveralls": "^2.1",
+        "phpunit/phpunit": ">=6 <8"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "3.x-dev"
+        }
     },
     "autoload": {
         "psr-4": {
@@ -49,12 +44,7 @@
     "autoload-dev": {
         "psr-4": {
             "Hoa\\Compiler\\Test\\": "atoum/",
-			"Tests\\Hoa\\Compiler\\": "tests/"
-        }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "3.x-dev"
+            "Tests\\Hoa\\Compiler\\": "tests/"
         }
     }
 }
