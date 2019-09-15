@@ -36,7 +36,7 @@
  *
  */
 
-namespace Hoa\Compiler\Test\Unit\Llk;
+namespace Tests\Hoa\Compiler\Unit\Llk;
 
 use Hoa\Compiler as LUT;
 use Hoa\Compiler\Llk\Llk as SUT;

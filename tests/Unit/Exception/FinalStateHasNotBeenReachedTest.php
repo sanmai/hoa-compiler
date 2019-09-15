@@ -36,7 +36,7 @@
  *
  */
 
-namespace Hoa\Compiler\Test\Unit\Exception;
+namespace Tests\Hoa\Compiler\Unit\Exception;
 
 use Hoa\Compiler as LUT;
 use Hoa\Compiler\Exception\FinalStateHasNotBeenReached as SUT;

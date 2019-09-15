@@ -36,7 +36,7 @@
  *
  */
 
-namespace Hoa\Compiler\Test\Integration;
+namespace Tests\Hoa\Compiler\Integration;
 
 use Hoa\Compiler as LUT;
 use Tests\Hoa\Compiler\TestCase;

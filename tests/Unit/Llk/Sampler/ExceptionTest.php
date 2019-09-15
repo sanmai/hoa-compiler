@@ -36,7 +36,7 @@
  *
  */
 
-namespace Hoa\Compiler\Test\Unit\Llk\Sampler;
+namespace Tests\Hoa\Compiler\Unit\Llk\Sampler;
 
 use Hoa\Compiler as LUT;
 use Hoa\Compiler\Llk\Sampler\Exception as SUT;
