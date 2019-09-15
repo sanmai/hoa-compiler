@@ -18,7 +18,6 @@ cache:
     - build/cache
 
 install:
-  - phpenv config-rm xdebug.ini || true
   - composer install --prefer-dist
 
 script:
