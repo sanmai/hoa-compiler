@@ -49,7 +49,7 @@ use Hoa\File;
  * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
-class Token extends Rule
+final class Token extends Rule
 {
     /**
      * LL(k) compiler of hoa://Library/Regex/Grammar.pp.

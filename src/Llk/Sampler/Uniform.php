@@ -54,7 +54,7 @@ use Hoa\Visitor;
  * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
-class Uniform extends Sampler
+final class Uniform extends Sampler
 {
     /**
      * Data (pre-computing).

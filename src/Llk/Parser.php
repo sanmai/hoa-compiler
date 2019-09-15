@@ -49,7 +49,7 @@ use Hoa\Iterator;
  * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
-class Parser
+final class Parser
 {
     /**
      * List of pragmas.

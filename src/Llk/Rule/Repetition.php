@@ -48,7 +48,7 @@ use Hoa\Compiler;
  * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
-class Repetition extends Rule
+final class Repetition extends Rule
 {
     /**
      * Minimum bound.

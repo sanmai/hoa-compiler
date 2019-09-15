@@ -46,6 +46,6 @@ namespace Hoa\Compiler\Llk\Rule;
  * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
-class Concatenation extends Rule
+final class Concatenation extends Rule
 {
 }

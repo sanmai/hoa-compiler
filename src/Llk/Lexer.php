@@ -48,7 +48,7 @@ use Hoa\Compiler;
  * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
-class Lexer
+final class Lexer
 {
     /**
      * Lexer state.

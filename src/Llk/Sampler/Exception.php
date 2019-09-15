@@ -48,6 +48,6 @@ use Hoa\Compiler;
  * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
-class Exception extends Compiler\Exception
+final class Exception extends Compiler\Exception
 {
 }

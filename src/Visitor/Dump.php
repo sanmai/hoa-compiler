@@ -48,7 +48,7 @@ use Hoa\Visitor;
  * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
-class Dump implements Visitor\Visit
+final class Dump implements Visitor\Visit
 {
     /**
      * Indentation depth.
