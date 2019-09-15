@@ -83,7 +83,7 @@ final class Parser
     /**
      * Lexer iterator.
      *
-     * @var \Hoa\Iterator\Lookahead
+     * @var \Hoa\Iterator\Buffer
      */
     protected $_tokenSequence = null;
 

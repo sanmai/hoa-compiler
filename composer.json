@@ -29,7 +29,8 @@
     "require": {
         "php"            : ">=7.0",
         "hoa/exception"  : "~1.0",
-        "hoa/visitor"    : "~2.0"
+        "hoa/visitor"    : "~2.0",
+        "hoa/iterator": "^2"
     },
     "require-dev": {
         "hoa/protocol"   : "~1.0",
