@@ -39,16 +39,11 @@
 namespace Tests\Hoa\Compiler\Unit\Llk\Rule;
 
 use Hoa\Compiler as LUT;
-use Hoa\Compiler\Llk\Rule\Token;
+use Hoa\Compiler\Llk\Rule\Token as SUT;
 use Tests\Hoa\Compiler\TestCase;
 
 /**
- * Class \Hoa\Compiler\Test\Unit\Llk\Rule\Token.
- *
  * Test suite of a token.
- *
- * @copyright  Copyright © 2007-2017 Hoa community
- * @license    New BSD License
  *
  * @covers \Hoa\Compiler\Llk\Rule\Token
  * @uses \Hoa\Compiler\Llk\Rule\Rule
@@ -69,7 +64,7 @@ class TokenTest extends TestCase
     public function case_is_a_rule()
     {
         $this
-            ->when($result = new Token('name', 'tokenName', 'nodeId', 0))
+            ->when($result = new SUT('name', 'tokenName', 'nodeId', 0))
             ->then
                 ->object($result)
                     ->isInstanceOf(LUT\Llk\Rule::class);
@@ -87,7 +82,7 @@ class TokenTest extends TestCase
                 $nodeId      = 'baz',
                 $unification = 0
             )
-            ->when($result = new Token($name, $tokenName, $nodeId, $unification))
+            ->when($result = new SUT($name, $tokenName, $nodeId, $unification))
             ->then
                 ->string($result->getName())
                     ->isEqualTo($name)
@@ -114,7 +109,7 @@ class TokenTest extends TestCase
                 $unification = 0,
                 $kept        = true
             )
-            ->when($result = new Token($name, $tokenName, $nodeId, $unification, $kept))
+            ->when($result = new SUT($name, $tokenName, $nodeId, $unification, $kept))
             ->then
                 ->string($result->getName())
                     ->isEqualTo($name)
@@ -139,7 +134,7 @@ class TokenTest extends TestCase
                 $tokenName   = 'bar',
                 $nodeId      = 'baz',
                 $unification = 0,
-                $token       = new Token($name, $tokenName, $nodeId, $unification)
+                $token       = new SUT($name, $tokenName, $nodeId, $unification)
             )
             ->when($result = $token->getTokenName())
             ->then
@@ -159,7 +154,7 @@ class TokenTest extends TestCase
                 $nodeId      = 'baz',
                 $unification = 0,
                 $namespace   = 'qux',
-                $token       = new Token($name, $tokenName, $nodeId, $unification)
+                $token       = new SUT($name, $tokenName, $nodeId, $unification)
             )
             ->when($result = $token->setNamespace($namespace))
             ->then
@@ -170,7 +165,6 @@ class TokenTest extends TestCase
     /**
      * @test
      */
-
     public function case_get_namespace()
     {
         $this
@@ -180,7 +174,7 @@ class TokenTest extends TestCase
                 $nodeId      = 'baz',
                 $unification = 0,
                 $namespace   = 'qux',
-                $token       = new Token($name, $tokenName, $nodeId, $unification),
+                $token       = new SUT($name, $tokenName, $nodeId, $unification),
                 $token->setNamespace($namespace)
             )
             ->when($result = $token->getNamespace())
@@ -188,10 +182,10 @@ class TokenTest extends TestCase
                 ->string($result)
                     ->isEqualTo($namespace);
     }
+
     /**
      * @test
      */
-
     public function case_set_representation()
     {
         $this
@@ -201,17 +195,17 @@ class TokenTest extends TestCase
                 $nodeId         = 'baz',
                 $unification    = 0,
                 $representation = 'qux',
-                $token          = new Token($name, $tokenName, $nodeId, $unification)
+                $token          = new SUT($name, $tokenName, $nodeId, $unification)
             )
             ->when($result = $token->setRepresentation($representation))
             ->then
                 ->variable($result)
                     ->isNull();
     }
+
     /**
      * @test
      */
-
     public function case_get_representation()
     {
         $this
@@ -221,7 +215,7 @@ class TokenTest extends TestCase
                 $nodeId         = 'baz',
                 $unification    = 0,
                 $representation = 'qux',
-                $token          = new Token($name, $tokenName, $nodeId, $unification),
+                $token          = new SUT($name, $tokenName, $nodeId, $unification),
                 $token->setRepresentation($representation)
             )
             ->when($result = $token->getRepresentation())
@@ -229,10 +223,10 @@ class TokenTest extends TestCase
                 ->string($result)
                     ->isEqualTo($representation);
     }
+
     /**
      * @test
      */
-
     public function case_get_ast()
     {
         $this
@@ -242,7 +236,7 @@ class TokenTest extends TestCase
                 $nodeId         = 'baz',
                 $unification    = 0,
                 $representation = 'qux',
-                $token          = new Token($name, $tokenName, $nodeId, $unification),
+                $token          = new SUT($name, $tokenName, $nodeId, $unification),
                 $token->setRepresentation($representation)
             )
             ->when($result = $token->getAST())
@@ -259,10 +253,10 @@ class TokenTest extends TestCase
                         '>  >  >  token(literal, x)' . "\n"
                     );
     }
+
     /**
      * @test
      */
-
     public function case_set_value()
     {
         $this
@@ -272,17 +266,17 @@ class TokenTest extends TestCase
                 $nodeId      = 'baz',
                 $unification = 0,
                 $value       = 'qux',
-                $token       = new Token($name, $tokenName, $nodeId, $unification)
+                $token       = new SUT($name, $tokenName, $nodeId, $unification)
             )
             ->when($result = $token->setValue($value))
             ->then
                 ->variable($result)
                     ->isNull();
     }
+
     /**
      * @test
      */
-
     public function case_get_value()
     {
         $this
@@ -292,7 +286,7 @@ class TokenTest extends TestCase
                 $nodeId      = 'baz',
                 $unification = 0,
                 $value       = 'qux',
-                $token       = new Token($name, $tokenName, $nodeId, $unification),
+                $token       = new SUT($name, $tokenName, $nodeId, $unification),
                 $token->setValue($value)
             )
             ->when($result = $token->getValue())
@@ -300,10 +294,10 @@ class TokenTest extends TestCase
                 ->string($result)
                     ->isEqualTo($value);
     }
+
     /**
      * @test
      */
-
     public function case_set_offset()
     {
         $this
@@ -313,17 +307,17 @@ class TokenTest extends TestCase
                 $nodeId      = 'baz',
                 $unification = 0,
                 $offset      = 42,
-                $token       = new Token($name, $tokenName, $nodeId, $unification)
+                $token       = new SUT($name, $tokenName, $nodeId, $unification)
             )
             ->when($result = $token->setOffset($offset))
             ->then
                 ->integer($result)
                     ->isZero();
     }
+
     /**
      * @test
      */
-
     public function case_get_offset()
     {
         $this
@@ -333,7 +327,7 @@ class TokenTest extends TestCase
                 $nodeId      = 'baz',
                 $unification = 0,
                 $offset      = 42,
-                $token       = new Token($name, $tokenName, $nodeId, $unification),
+                $token       = new SUT($name, $tokenName, $nodeId, $unification),
                 $token->setOffset($offset)
             )
             ->when($result = $token->getOffset())
@@ -341,10 +335,10 @@ class TokenTest extends TestCase
                 ->integer($result)
                     ->isEqualTo($offset);
     }
+
     /**
      * @test
      */
-
     public function case_set_kept()
     {
         $this
@@ -354,17 +348,17 @@ class TokenTest extends TestCase
                 $nodeId      = 'baz',
                 $unification = 0,
                 $kept        = true,
-                $token       = new Token($name, $tokenName, $nodeId, $unification)
+                $token       = new SUT($name, $tokenName, $nodeId, $unification)
             )
             ->when($result = $token->setKept($kept))
             ->then
                 ->boolean($result)
                     ->isFalse();
     }
+
     /**
      * @test
      */
-
     public function case_is_kept()
     {
         $this
@@ -374,7 +368,7 @@ class TokenTest extends TestCase
                 $nodeId      = 'baz',
                 $unification = 0,
                 $kept        = true,
-                $token       = new Token($name, $tokenName, $nodeId, $unification),
+                $token       = new SUT($name, $tokenName, $nodeId, $unification),
                 $token->setKept($kept)
             )
             ->when($result = $token->isKept())
@@ -382,10 +376,10 @@ class TokenTest extends TestCase
                 ->boolean($result)
                     ->isTrue();
     }
+
     /**
      * @test
      */
-
     public function case_get_unification_index()
     {
         $this
@@ -394,7 +388,7 @@ class TokenTest extends TestCase
                 $tokenName   = 'bar',
                 $nodeId      = 'baz',
                 $unification = 42,
-                $token       = new Token($name, $tokenName, $nodeId, $unification)
+                $token       = new SUT($name, $tokenName, $nodeId, $unification)
             )
             ->when($result = $token->getUnificationIndex())
             ->then
