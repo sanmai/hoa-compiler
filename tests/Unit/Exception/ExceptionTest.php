@@ -36,7 +36,7 @@
  *
  */
 
-namespace Hoa\Compiler\Test\Unit\Exception;
+namespace Tests\Hoa\Compiler\Unit\Exception;
 
 use Hoa\Compiler\Exception as SUT;
 use Hoa\Exception as HoaException;
