@@ -39,7 +39,6 @@
 namespace Hoa\Compiler\Llk\Sampler;
 
 use Hoa\Compiler;
-use Hoa\Iterator;
 
 /**
  * Class \Hoa\Compiler\Llk\Sampler\Coverage.
@@ -61,7 +60,7 @@ use Hoa\Iterator;
  * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
-final class Coverage extends Sampler implements Iterator
+final class Coverage extends Sampler implements \Iterator
 {
     /**
      * Stack of rules to explore.
