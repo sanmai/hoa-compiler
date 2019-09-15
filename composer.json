@@ -37,7 +37,8 @@
         "hoa/test": "~2.0",
         "phpunit/phpunit": ">=6 <8",
         "friendsofphp/php-cs-fixer": "^2.15",
-        "php-coveralls/php-coveralls": "^2.1"
+        "php-coveralls/php-coveralls": "^2.1",
+        "hoa/json": "^2.17"
     },
     "autoload": {
         "psr-4": {
