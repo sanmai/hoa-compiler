@@ -39,7 +39,6 @@
 namespace Tests\Hoa\Compiler\Unit\Exception;
 
 use Hoa\Compiler\Exception as SUT;
-use Hoa\Exception as HoaException;
 use Tests\Hoa\Compiler\TestCase;
 
 /**
@@ -58,6 +57,12 @@ class ExceptionTest extends TestCase
             ->when($result = new SUT('foo', 0))
             ->then
                 ->object($result)
-                    ->isInstanceOf(HoaException::class);
+                    ->isInstanceOf(\Exception::class);
+    }
+
+    public function test_exception_formats_message()
+    {
+        $result = new SUT('foo %s', 0, ['bar']);
+        $this->assertSame('foo bar', $result->getMessage());
     }
 }

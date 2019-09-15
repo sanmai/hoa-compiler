@@ -38,16 +38,16 @@
 
 namespace Hoa\Compiler;
 
-use Hoa\Exception as HoaException;
-
 /**
  * Class \Hoa\Compiler\Exception.
- *
- * Extending the \Hoa\Exception\Exception class.
  *
  * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
-class Exception extends HoaException
+class Exception extends \Exception
 {
+    public function __construct($message, $code = 0, $arguments = [])
+    {
+        parent::__construct(vsprintf($message, (array) $arguments), $code);
+    }
 }
