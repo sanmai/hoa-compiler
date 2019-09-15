@@ -48,7 +48,7 @@ final class ExampleTest extends TestCase
     public function testExample()
     {
         // 1. Load grammar.
-        $compiler = \Hoa\Compiler\Llk\Llk::load(file_get_contents('tests/Fixtures/Grammar/Json.pp'));
+        $compiler = \Hoa\Compiler\Llk::load(file_get_contents('tests/Fixtures/Grammar/Json.pp'));
 
         // 2. Parse a data.
         $ast = $compiler->parse('{"foo": true, "bar": [null, 42]}');

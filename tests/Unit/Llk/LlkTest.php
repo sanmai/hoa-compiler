@@ -39,18 +39,18 @@
 namespace Tests\Hoa\Compiler\Unit\Llk;
 
 use Hoa\Compiler as LUT;
-use Hoa\Compiler\Llk\Llk as SUT;
+use Hoa\Compiler\Llk as SUT;
 use Hoa\File;
 use Tests\Hoa\Compiler\TestCase;
 
 /**
  * Test suite of the LL(k) helper class.
  *
- * @covers \Hoa\Compiler\Llk\Llk
+ * @covers \Hoa\Compiler\Llk
  * @uses \Hoa\Compiler\Llk\Lexer
  * @uses \Hoa\Compiler\Llk\Parser
  * @uses \Hoa\Compiler\Llk\Rule\Analyzer
- * @uses \Hoa\Compiler\Llk\Rule\Rule
+ * @uses \Hoa\Compiler\Llk\Rule
  * @uses \Hoa\Compiler\Llk\Rule\Token
  * @uses \Hoa\Compiler\Llk\Rule\Repetition
  */

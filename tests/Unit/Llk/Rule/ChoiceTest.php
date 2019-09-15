@@ -42,7 +42,7 @@ use Tests\Hoa\Compiler\TestCase;
 
 /**
  * @covers \Hoa\Compiler\Llk\Rule\Choice
- * @uses \Hoa\Compiler\Llk\Rule\Rule
+ * @uses \Hoa\Compiler\Llk\Rule
  */
 class ChoiceTest extends TestCase
 {

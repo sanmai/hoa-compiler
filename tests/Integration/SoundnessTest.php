@@ -39,7 +39,7 @@
 namespace Tests\Hoa\Compiler\Integration;
 
 use Hoa\Compiler as LUT;
-use Hoa\Compiler\Llk\Sampler\Sampler;
+use Hoa\Compiler\Llk\Sampler;
 use Hoa\File;
 use Hoa\Iterator;
 use Hoa\Math;

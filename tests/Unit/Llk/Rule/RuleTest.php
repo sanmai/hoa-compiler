@@ -38,13 +38,13 @@
 
 namespace Tests\Hoa\Compiler\Unit\Llk\Rule;
 
-use Hoa\Compiler\Llk\Rule\Rule as SUT;
+use Hoa\Compiler\Llk\Rule as SUT;
 use Tests\Hoa\Compiler\TestCase;
 
 /**
  * Test suite of a rule.
  *
- * @covers \Hoa\Compiler\Llk\Rule\Rule
+ * @covers \Hoa\Compiler\Llk\Rule
  */
 class RuleTest extends TestCase
 {
