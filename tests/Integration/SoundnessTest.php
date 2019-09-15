@@ -36,7 +36,7 @@
  *
  */
 
-namespace Hoa\Json\Test\Integration;
+namespace Tests\Hoa\Compiler\Integration;
 
 use Hoa\Compiler as LUT;
 use Hoa\Compiler\Llk\Sampler\Sampler;
