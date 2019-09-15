@@ -36,11 +36,18 @@
  *
  */
 
-namespace Hoa\Compiler\Llk\Rule;
+namespace Hoa\Compiler;
+
+use Hoa\Exception as HoaException;
 
 /**
- * @deprecated alias
+ * Class \Hoa\Compiler\Exception.
+ *
+ * Extending the \Hoa\Exception\Exception class.
+ *
+ * @copyright  Copyright © 2007-2017 Hoa community
+ * @license    New BSD License
  */
-abstract class Rule extends \Hoa\Compiler\Llk\Rule
+class Exception extends HoaException
 {
 }

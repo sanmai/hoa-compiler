@@ -38,17 +38,9 @@
 
 namespace Hoa\Compiler\Exception;
 
-use Hoa\Exception as HoaException;
-
 /**
- * Class \Hoa\Compiler\Exception.
- *
- * Extending the \Hoa\Exception\Exception class.
- *
- * @copyright  Copyright © 2007-2017 Hoa community
- * @license    New BSD License
+ * @deprecated alias
  */
-class Exception extends HoaException
+class Exception extends \Hoa\Compiler\Exception
 {
 }
-
