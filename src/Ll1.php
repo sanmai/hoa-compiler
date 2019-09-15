@@ -317,7 +317,7 @@ abstract class Ll1
      * @param   array   $actions        Actions table.
      * @param   array   $names          Names of automata.
      */
-    public function __construct(
+    final public function __construct(
         array $skip,
         array $tokens,
         array $states,
@@ -345,7 +345,7 @@ abstract class Ll1
      * @throws  \Hoa\Compiler\Exception\FinalStateHasNotBeenReached
      * @throws  \Hoa\Compiler\Exception\IllegalToken
      */
-    public function compile($in)
+    final public function compile($in)
     {
         $d             = 0;
         $c             = 0; // current automata.
@@ -640,7 +640,7 @@ abstract class Ll1
      * @param   string  &$in    Source code.
      * @return  void
      */
-    protected function pre(&$in)
+    final protected function pre(&$in)
     {
         return;
     }
@@ -650,7 +650,7 @@ abstract class Ll1
      *
      * @return  bool
      */
-    protected function end()
+    final protected function end()
     {
         return true;
     }
@@ -668,7 +668,7 @@ abstract class Ll1
      * @param   int     $line    Initial line.
      * @return  int
      */
-    public function setInitialLine($line)
+    final public function setInitialLine($line)
     {
         $old                = $this->_initialLine;
         $this->_initialLine = $line;
@@ -682,7 +682,7 @@ abstract class Ll1
      * @param   array   $skip    Skip.
      * @return  array
      */
-    public function setSkip(array $skip)
+    final public function setSkip(array $skip)
     {
         $old         = $this->_skip;
         $this->_skip = $skip;
@@ -697,7 +697,7 @@ abstract class Ll1
      * @param   array   $tokens    Tokens.
      * @return  array
      */
-    public function setTokens(array $tokens)
+    final public function setTokens(array $tokens)
     {
         $old           = $this->_tokens;
         $this->_tokens = $tokens;
@@ -711,7 +711,7 @@ abstract class Ll1
      * @param   array   $states    States.
      * @return  array
      */
-    public function setStates(array $states)
+    final public function setStates(array $states)
     {
         $old           = $this->_states;
         $this->_states = $states;
@@ -725,7 +725,7 @@ abstract class Ll1
      * @param   array   $terminal    Terminal states.
      * @return  array
      */
-    public function setTerminal(array $terminal)
+    final public function setTerminal(array $terminal)
     {
         $old             = $this->_terminal;
         $this->_terminal = $terminal;
@@ -739,7 +739,7 @@ abstract class Ll1
      * @param   array   $transitions    Transitions table.
      * @return  array
      */
-    public function setTransitions(array $transitions)
+    final public function setTransitions(array $transitions)
     {
         $old                = $this->_transitions;
         $this->_transitions = $transitions;
@@ -753,7 +753,7 @@ abstract class Ll1
      * @param   array   $actions    Actions table.
      * @return  array
      */
-    public function setActions(array $actions)
+    final public function setActions(array $actions)
     {
         foreach ($actions as $e => $automata) {
             foreach ($automata as $i => $state) {
@@ -777,7 +777,7 @@ abstract class Ll1
      * @param   array   $names    Names of automata.
      * @return  array
      */
-    public function setNames(array $names)
+    final public function setNames(array $names)
     {
         $old          = $this->_names;
         $this->_names = $names;
@@ -790,7 +790,7 @@ abstract class Ll1
      *
      * @return  int
      */
-    public function getInitialLine()
+    final public function getInitialLine()
     {
         return $this->_initialLine;
     }
@@ -800,7 +800,7 @@ abstract class Ll1
      *
      * @return  array
      */
-    public function getSkip()
+    final public function getSkip()
     {
         return $this->_skip;
     }
@@ -810,7 +810,7 @@ abstract class Ll1
      *
      * @return  array
      */
-    public function getTokens()
+    final public function getTokens()
     {
         return $this->_tokens;
     }
@@ -820,7 +820,7 @@ abstract class Ll1
      *
      * @return  array
      */
-    public function getStates()
+    final public function getStates()
     {
         return $this->_states;
     }
@@ -830,7 +830,7 @@ abstract class Ll1
      *
      * @return  array
      */
-    public function getTerminal()
+    final public function getTerminal()
     {
         return $this->_terminal;
     }
@@ -840,7 +840,7 @@ abstract class Ll1
      *
      * @return  array
      */
-    public function getTransitions()
+    final public function getTransitions()
     {
         return $this->_transitions;
     }
@@ -850,7 +850,7 @@ abstract class Ll1
      *
      * @return  array
      */
-    public function getActions()
+    final public function getActions()
     {
         return $this->_actions;
     }
@@ -860,7 +860,7 @@ abstract class Ll1
      *
      * @return  array
      */
-    public function getNames()
+    final public function getNames()
     {
         return $this->_names;
     }
@@ -870,7 +870,7 @@ abstract class Ll1
      *
      * @return  void
      */
-    public function __toString()
+    final public function __toString()
     {
         $out =
             'digraph ' . str_replace('\\', '', get_class($this)) . ' {' .
