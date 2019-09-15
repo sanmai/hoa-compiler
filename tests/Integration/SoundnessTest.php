@@ -40,7 +40,6 @@ namespace Tests\Hoa\Compiler\Integration;
 
 use Hoa\Compiler as LUT;
 use Hoa\Compiler\Llk\Sampler;
-use Hoa\File;
 use Hoa\Iterator;
 use Hoa\Math;
 use Hoa\Regex;
@@ -176,9 +175,7 @@ class SoundnessTest extends TestCase
 
     protected function getJSONCompiler()
     {
-        return LUT\Llk::load(
-            new File\Read('hoa://Library/Json/Grammar.pp')
-        );
+        return LUT\Llk::load(file_get_contents(dirname(__DIR__) . '/Fixtures/Grammar/Json.pp'));
     }
 
     protected function getRegexSampler()

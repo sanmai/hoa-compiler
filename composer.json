@@ -34,7 +34,6 @@
     },
     "require-dev": {
         "hoa/protocol"   : "~1.0",
-        "hoa/json": "~2.0",
         "hoa/test": "~2.0",
         "phpunit/phpunit": ">=6 <8",
         "friendsofphp/php-cs-fixer": "^2.15",
