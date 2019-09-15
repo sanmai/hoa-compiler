@@ -51,7 +51,6 @@ use Tests\Hoa\Compiler\TestCase;
  * @uses \Hoa\Compiler\Llk\Lexer
  * @uses \Hoa\Compiler\Llk\Llk
  * @uses \Hoa\Compiler\Llk\Parser
- * @uses \Hoa\Compiler\Llk\Rule\Analyzer
  * @uses \Hoa\Compiler\Llk\Rule\Invocation
  * @uses \Hoa\Compiler\Llk\TreeNode
  * @uses \Hoa\Compiler\Visitor\Dump
