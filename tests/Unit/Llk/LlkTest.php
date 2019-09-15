@@ -72,20 +72,31 @@ class LlkTest extends TestCase
                 );
     }
 
+    public function exampleData()
+    {
+        $data = '%pragma  hello world' . "\n" .
+            '%token   foobar bazqux' . "\n" .
+            'ruleA:' . "\n" .
+            '    <foobar>';
+
+        yield [$data];
+
+        if (class_exists(File\ReadWrite::class)) {
+            $stream = new File\ReadWrite(tempnam('', __METHOD__));
+            $stream->writeAll($data);
+
+            yield [$stream];
+        }
+    }
+
     /**
      * @test
+     * @dataProvider exampleData
      */
-    public function case_load()
+    public function case_load($stream)
     {
         $this
             ->given(
-                $stream = new File\ReadWrite(tempnam('', __METHOD__)),
-                $stream->writeAll(
-                    '%pragma  hello world' . "\n" .
-                    '%token   foobar bazqux' . "\n" .
-                    'ruleA:' . "\n" .
-                    '    <foobar>'
-                ),
                 $_ruleA = new LUT\Llk\Rule\Token('ruleA', 'foobar', null, -1, true),
                 $_ruleA->setPPRepresentation(' <foobar>')
             )
@@ -116,7 +127,7 @@ class LlkTest extends TestCase
     {
         $this
             ->given(
-                $stream = new File\Read('src/Llk/Llk.pp'),
+                $stream = class_exists(File\Read::class) ? new File\Read('src/Llk/Llk.pp') : file_get_contents('src/Llk/Llk.pp'),
                 $parser = SUT::load($stream)
             )
             ->when($result = SUT::save($parser, 'Foobar'))
