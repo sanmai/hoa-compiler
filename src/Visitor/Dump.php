@@ -73,6 +73,7 @@ final class Dump implements Visitor\Visit
         $eldnah  = null
     ) {
         ++self::$_i;
+        /** @var \Hoa\Compiler\Llk\TreeNode $element */
 
         $out  = str_repeat('>  ', self::$_i) . $element->getId();
 
@@ -106,12 +107,12 @@ final class Dump implements Visitor\Visit
     /**
      * Dump data.
      *
-     * @param   mixed  $data    Data.
+     * @param   string[]|string  $data    Data.
      * @return  string
      */
     protected function dumpData($data)
     {
-        $out = null;
+        $out = '';
 
         if (!is_array($data)) {
             return $data;

@@ -55,12 +55,12 @@ final class TreeNode implements Visitor\Element
      *
      * @var string
      */
-    protected $_id       = null;
+    protected $_id       = '';
 
     /**
      * Value of the node (non-null for token nodes).
      *
-     * @var array
+     * @var array|null
      */
     protected $_value    = null;
 
@@ -69,14 +69,14 @@ final class TreeNode implements Visitor\Element
      *
      * @var array
      */
-    protected $_children = null;
+    protected $_children = [];
 
     /**
      * Parent.
      *
-     * @var \Hoa\Compiler\Llk\TreeNode
+     * @var \Hoa\Compiler\Llk\TreeNode|null
      */
-    protected $_parent   = null;
+    protected $_parent = null;
 
     /**
      * Attached data.
@@ -96,7 +96,7 @@ final class TreeNode implements Visitor\Element
      * @param   \Hoa\Compiler\Llk\TreeNode  $parent    Parent.
      */
     public function __construct(
-        $id,
+        string $id,
         array $value    = null,
         array $children = [],
         self  $parent   = null
@@ -122,7 +122,7 @@ final class TreeNode implements Visitor\Element
      * @param   string  $id    ID.
      * @return  string
      */
-    public function setId($id)
+    public function setId(string $id)
     {
         $old       = $this->_id;
         $this->_id = $id;
@@ -144,7 +144,7 @@ final class TreeNode implements Visitor\Element
      * Set value.
      *
      * @param   array  $value    Value (token & value).
-     * @return  array
+     * @return  array|null
      */
     public function setValue(array $value)
     {
@@ -157,7 +157,7 @@ final class TreeNode implements Visitor\Element
     /**
      * Get value.
      *
-     * @return  array
+     * @return  array|null
      */
     public function getValue()
     {
@@ -302,7 +302,7 @@ final class TreeNode implements Visitor\Element
      * Set parent.
      *
      * @param   \Hoa\Compiler\Llk\TreeNode  $parent    Parent.
-     * @return  \Hoa\Compiler\Llk\TreeNode
+     * @return  \Hoa\Compiler\Llk\TreeNode|null
      */
     public function setParent(self $parent)
     {
@@ -315,7 +315,7 @@ final class TreeNode implements Visitor\Element
     /**
      * Get parent.
      *
-     * @return  \Hoa\Compiler\Llk\TreeNode
+     * @return  \Hoa\Compiler\Llk\TreeNode|null
      */
     public function getParent()
     {

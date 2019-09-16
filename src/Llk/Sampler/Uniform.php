@@ -177,7 +177,7 @@ final class Uniform extends Sampler
      * @param   int                     $n       Size.
      * @return  int
      */
-    public function count(Compiler\Llk\Rule $rule = null, $n = -1)
+    public function count(Compiler\Llk\Rule $rule = null, int $n = -1)
     {
         if (null === $rule || -1 === $n) {
             return 0;
@@ -191,6 +191,7 @@ final class Uniform extends Sampler
 
         $this->_data[$ruleName][$n] =  ['n' => 0];
         $out                        = &$this->_data[$ruleName][$n]['n'];
+        /** @var int $out */
         $rule                       =  $this->_rules[$ruleName];
 
         if ($rule instanceof Compiler\Llk\Rule\Choice) {
