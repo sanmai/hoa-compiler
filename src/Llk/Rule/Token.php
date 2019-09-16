@@ -142,7 +142,7 @@ final class Token extends Rule
     /**
      * Get token name.
      *
-     * @return  string
+     * @return string|null
      */
     public function getTokenName()
     {
