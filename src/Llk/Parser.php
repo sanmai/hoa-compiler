@@ -152,7 +152,7 @@ class Parser
      * @return  mixed
      * @throws  \Hoa\Compiler\Exception\UnexpectedToken
      */
-    public function parse($text, $rule = null, $tree = true)
+    final public function parse($text, $rule = null, $tree = true)
     {
         $k = 1024;
 
@@ -252,7 +252,7 @@ class Parser
      *
      * @return  mixed
      */
-    protected function unfold()
+    final protected function unfold()
     {
         while (0 < count($this->_todo)) {
             $rule = array_pop($this->_todo);
@@ -286,7 +286,7 @@ class Parser
      * @param   int                     $next      Next rule index.
      * @return  bool
      */
-    protected function _parse(Rule $zeRule, $next)
+    final protected function _parse(Rule $zeRule, $next)
     {
         if ($zeRule instanceof Rule\Token) {
             $name = $this->_tokenSequence->current()['token'];
@@ -459,7 +459,7 @@ class Parser
      *
      * @return  bool
      */
-    protected function backtrack()
+    final protected function backtrack()
     {
         $found = false;
 
@@ -502,7 +502,7 @@ class Parser
      * @param   array    &$children    Collected children.
      * @return  \Hoa\Compiler\Llk\TreeNode
      */
-    protected function _buildTree($i = 0, &$children = [])
+    final protected function _buildTree($i = 0, &$children = [])
     {
         $max = count($this->_trace);
 
@@ -623,7 +623,7 @@ class Parser
      *                                not.
      * @return  bool
      */
-    protected function mergeTree(
+    final protected function mergeTree(
         &$children,
         &$handle,
         $cId,
@@ -664,7 +664,7 @@ class Parser
      * @param   \Hoa\Compiler\Llk\TreeNode  $newNode    Node to merge.
      * @return  void
      */
-    protected function mergeTreeRecursive(TreeNode $node, TreeNode $newNode)
+    final protected function mergeTreeRecursive(TreeNode $node, TreeNode $newNode)
     {
         $nNId = $newNode->getId();
 
@@ -698,7 +698,7 @@ class Parser
      *
      * @return  \Hoa\Compiler\Llk\TreeNode
      */
-    public function getTree()
+    final public function getTree()
     {
         return $this->_tree;
     }
@@ -708,7 +708,7 @@ class Parser
      *
      * @return  array
      */
-    public function getTrace()
+    final public function getTrace()
     {
         return $this->_trace;
     }
@@ -718,7 +718,7 @@ class Parser
      *
      * @return  array
      */
-    public function getPragmas()
+    final public function getPragmas()
     {
         return $this->_pragmas;
     }
@@ -728,7 +728,7 @@ class Parser
      *
      * @return  array
      */
-    public function getTokens()
+    final public function getTokens()
     {
         return $this->_tokens;
     }
@@ -738,7 +738,7 @@ class Parser
      *
      * @return  \Hoa\Iterator\Buffer
      */
-    public function getTokenSequence()
+    final public function getTokenSequence()
     {
         return $this->_tokenSequence;
     }
@@ -749,7 +749,7 @@ class Parser
      * @param   string  $name    Rule name.
      * @return  \Hoa\Compiler\Llk\Rule
      */
-    public function getRule($name)
+    final public function getRule($name)
     {
         if (!isset($this->_rules[$name])) {
             return null;
@@ -763,7 +763,7 @@ class Parser
      *
      * @return  array
      */
-    public function getRules()
+    final public function getRules()
     {
         return $this->_rules;
     }
@@ -773,7 +773,7 @@ class Parser
      *
      * @return  string
      */
-    public function getRootRule()
+    final public function getRootRule()
     {
         foreach ($this->_rules as $rule => $_) {
             if (!is_int($rule)) {

@@ -51,6 +51,10 @@ class ParserTest extends TestCase
     public function test_can_be_extended()
     {
         $this->assertInstanceOf(Parser::class, new class() extends Parser {
+            public function __construct()
+            {
+                parent::__construct();
+            }
         });
     }
 }
