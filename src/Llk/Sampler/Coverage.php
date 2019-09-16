@@ -103,7 +103,7 @@ final class Coverage extends Sampler implements \Iterator
      *
      * @var string
      */
-    protected $_current      = null;
+    protected $_current      = '';
 
 
 
@@ -145,7 +145,7 @@ final class Coverage extends Sampler implements \Iterator
     public function rewind()
     {
         $this->_key          = -1;
-        $this->_current      = null;
+        $this->_current      = '';
         $this->_tests        = [];
         $this->_coveredRules = [];
 
@@ -204,7 +204,7 @@ final class Coverage extends Sampler implements \Iterator
             return false;
         }
 
-        $handle = null;
+        $handle = '';
 
         foreach ($this->_trace as $trace) {
             if ($trace instanceof Compiler\Llk\Rule\Token) {
@@ -256,7 +256,7 @@ final class Coverage extends Sampler implements \Iterator
      * The coverage algorithm.
      *
      * @param   \Hoa\Compiler\Llk\Rule  $rule    Rule to cover.
-     * @return  bool
+     * @return  bool|null
      */
     protected function coverage(Compiler\Llk\Rule $rule)
     {
@@ -460,7 +460,7 @@ final class Coverage extends Sampler implements \Iterator
      * Extract a given sequence from existing traces.
      *
      * @param   array  $rules    Rules to consider.
-     * @return  array
+     * @return  array|null
      */
     protected function extract(array $rules)
     {
@@ -544,11 +544,11 @@ final class Coverage extends Sampler implements \Iterator
         }
 
         $ruleName       = $pop->getRule();
-        $this->_covered = $pop->getData();
+        $covered        = $pop->getData(); // might have been $this->_coveredRules ?
         $this->_todo    = $pop->getTodo();
         $this->_todo[]  = new Compiler\Llk\Rule\Entry(
             $ruleName,
-            $this->_covered,
+            $covered,
             $this->_todo
         );
 

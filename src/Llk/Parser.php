@@ -762,7 +762,7 @@ class Parser
     /**
      * Get rules.
      *
-     * @return  array
+     * @return Rule[]
      */
     final public function getRules()
     {

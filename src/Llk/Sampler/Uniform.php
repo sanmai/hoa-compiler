@@ -70,7 +70,8 @@ final class Uniform extends Sampler
      */
     protected $_length = 5;
 
-
+    /** @var Math\Sampler\Random */
+    private $_sampler;
 
     /**
      * Construct a generator.
@@ -81,7 +82,7 @@ final class Uniform extends Sampler
     public function __construct(
         Compiler\Llk\Parser $compiler,
         Visitor\Visit       $tokenSampler,
-        $length = 5
+        int $length = 5
     ) {
         parent::__construct($compiler, $tokenSampler);
 
@@ -100,7 +101,7 @@ final class Uniform extends Sampler
      *
      * @param   \Hoa\Compiler\Llk\Rule  $rule    Rule to start.
      * @param   int                     $n       Size.
-     * @return  string
+     * @return  string|null
      */
     public function uniform(Compiler\Llk\Rule $rule = null, $n = -1)
     {
@@ -108,6 +109,8 @@ final class Uniform extends Sampler
             $rule = $this->_rules[$this->_rootRuleName];
             $n    = $this->getLength();
         }
+
+        \assert($rule instanceof Compiler\Llk\Rule);
 
         $data     = &$this->_data[$rule->getName()][$n];
         $computed = $data['n'];
@@ -133,17 +136,17 @@ final class Uniform extends Sampler
             return $this->uniform($this->_rules[$children[$e]], $n);
         } elseif ($rule instanceof Compiler\Llk\Rule\Concatenation) {
             $children  = $rule->getChildren();
-            $out       = null;
+            $out       = '';
             $Γ         = $data['Γ'];
             $γ         = $Γ[$this->_sampler->getInteger(0, count($Γ) - 1)];
 
             foreach ($children as $i => $child) {
-                $out .= $this->uniform($this->_rules[$child], $γ[$i]);
+                $out .= (string) $this->uniform($this->_rules[$child], $γ[$i]);
             }
 
-            return $out;
+            return $out === '' ? null : $out;
         } elseif ($rule instanceof Compiler\Llk\Rule\Repetition) {
-            $out   =  null;
+            $out   =  '';
             $stat  = &$data['xy'];
             $child =  $this->_rules[$rule->getChildren()];
             $b     =  0;
@@ -155,14 +158,16 @@ final class Uniform extends Sampler
                 }
             }
 
+            /** @psalm-suppress PossiblyUndefinedVariable */
             $Γ = &$st['Γ'];
             $γ = &$Γ[$this->_sampler->getInteger(0, count($Γ) - 1)];
 
+            /** @psalm-suppress PossiblyUndefinedVariable */
             for ($j = 0; $j < $α; ++$j) {
-                $out .= $this->uniform($child, $γ[$j]);
+                $out .= (string) $this->uniform($child, $γ[$j]);
             }
 
-            return $out;
+            return $out === '' ? null : $out;
         } elseif ($rule instanceof Compiler\Llk\Rule\Token) {
             return $this->generateToken($rule);
         }
@@ -190,6 +195,7 @@ final class Uniform extends Sampler
         }
 
         $this->_data[$ruleName][$n] =  ['n' => 0];
+        /** @psalm-suppress NullArrayAccess */
         $out                        = &$this->_data[$ruleName][$n]['n'];
         /** @var int $out */
         $rule                       =  $this->_rules[$ruleName];
@@ -205,6 +211,7 @@ final class Uniform extends Sampler
                 $n
             );
             $this->_data[$ruleName][$n]['Γ'] = [];
+            /** @psalm-suppress NullArrayAccess */
             $handle                          = &$this->_data[$ruleName][$n]['Γ'];
 
             foreach ($Γ as $γ) {
@@ -222,6 +229,7 @@ final class Uniform extends Sampler
             }
         } elseif ($rule instanceof Compiler\Llk\Rule\Repetition) {
             $this->_data[$ruleName][$n]['xy'] = [];
+            /** @psalm-suppress NullArrayAccess */
             $handle                           = &$this->_data[$ruleName][$n]['xy'];
             $child                            =  $this->_rules[$rule->getChildren()];
             $x                                =  $rule->getMin();
@@ -273,7 +281,7 @@ final class Uniform extends Sampler
      * @return  int
      * @throws  \Hoa\Compiler\Exception
      */
-    public function setLength($length)
+    public function setLength(int $length)
     {
         if (0 >= $length) {
             throw new Exception(
