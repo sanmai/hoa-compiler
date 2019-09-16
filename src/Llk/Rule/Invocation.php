@@ -51,7 +51,7 @@ abstract class Invocation
     /**
      * Rule.
      *
-     * @var string
+     * @var string|null
      */
     protected $_rule         = null;
 
@@ -65,7 +65,7 @@ abstract class Invocation
     /**
      * Piece of todo sequence.
      *
-     * @var array
+     * @var array|null
      */
     protected $_todo         = null;
 
@@ -84,12 +84,10 @@ abstract class Invocation
      */
     protected $_transitional = false;
 
-
-
     /**
      * Constructor.
      *
-     * @param   string  $rule     Rule name.
+     * @param   string|int  $rule     Rule name.
      * @param   mixed   $data     Data.
      * @param   array   $todo     Todo.
      * @param   int     $depth    Depth.
@@ -104,7 +102,7 @@ abstract class Invocation
         $this->_data         = $data;
         $this->_todo         = $todo;
         $this->_depth        = $depth;
-        $this->_transitional = is_int($rule);
+        $this->_transitional = \is_int($rule);
 
         return;
     }

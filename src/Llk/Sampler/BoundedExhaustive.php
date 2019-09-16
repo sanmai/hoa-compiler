@@ -59,14 +59,14 @@ final class BoundedExhaustive extends Sampler implements \Iterator
      *
      * @var array
      */
-    protected $_todo    = null;
+    protected $_todo    = [];
 
     /**
      * Stack of rules that have already been covered.
      *
      * @var array
      */
-    protected $_trace   = null;
+    protected $_trace   = [];
 
     /**
      * Current iterator key.
@@ -80,7 +80,7 @@ final class BoundedExhaustive extends Sampler implements \Iterator
      *
      * @var string
      */
-    protected $_current = null;
+    protected $_current = '';
 
     /**
      * Bound.
@@ -147,7 +147,7 @@ final class BoundedExhaustive extends Sampler implements \Iterator
     public function rewind()
     {
         $ruleName       = $this->_rootRuleName;
-        $this->_current = null;
+        $this->_current = '';
         $this->_key     = -1;
         $this->_trace   = [];
         $handle         = new Compiler\Llk\Rule\Ekzit($ruleName, 0);
@@ -170,7 +170,7 @@ final class BoundedExhaustive extends Sampler implements \Iterator
             return false;
         }
 
-        $handle = null;
+        $handle = '';
 
         foreach ($this->_trace as $trace) {
             if ($trace instanceof Compiler\Llk\Rule\Token) {

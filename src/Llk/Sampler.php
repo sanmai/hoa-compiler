@@ -56,35 +56,35 @@ abstract class Sampler
      *
      * @var \Hoa\Compiler\Llk\Parser
      */
-    protected $_compiler         = null;
+    protected $_compiler;
 
     /**
      * Tokens.
      *
      * @var array
      */
-    protected $_tokens           = null;
+    protected $_tokens           = [];
 
     /**
      * All rules (from the compiler).
      *
      * @var array
      */
-    protected $_rules            = null;
+    protected $_rules            = [];
 
     /**
      * Token sampler.
      *
      * @var \Hoa\Visitor\Visit
      */
-    protected $_tokenSampler     = null;
+    protected $_tokenSampler;
 
     /**
      * Root rule name.
      *
      * @var string
      */
-    protected $_rootRuleName     = null;
+    protected $_rootRuleName     = '';
 
     /**
      * Current token namespace.
@@ -188,6 +188,8 @@ abstract class Sampler
                     break;
                 }
             }
+
+            \assert(isset($regex));
 
             $token->setRepresentation($regex);
         }

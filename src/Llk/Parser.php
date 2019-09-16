@@ -152,7 +152,7 @@ class Parser
      * @return  mixed
      * @throws  \Hoa\Compiler\Exception\UnexpectedToken
      */
-    final public function parse($text, $rule = null, $tree = true)
+    final public function parse(string $text, string $rule = null, bool $tree = true)
     {
         $k = 1024;
 

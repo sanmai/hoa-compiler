@@ -67,21 +67,21 @@ final class Coverage extends Sampler implements \Iterator
      *
      * @var array
      */
-    protected $_todo         = null;
+    protected $_todo = [];
 
     /**
      * Stack of rules that have already been covered.
      *
      * @var array
      */
-    protected $_trace        = null;
+    protected $_trace = [];
 
     /**
      * Produced test cases.
      *
      * @var array
      */
-    protected $_tests        = null;
+    protected $_tests = [];
 
     /**
      * Covered rules: ruleName to structure that contains the choice point and
@@ -89,7 +89,7 @@ final class Coverage extends Sampler implements \Iterator
      *
      * @var array
      */
-    protected $_coveredRules = null;
+    protected $_coveredRules = [];
 
     /**
      * Current iterator key.
@@ -104,8 +104,6 @@ final class Coverage extends Sampler implements \Iterator
      * @var string
      */
     protected $_current      = '';
-
-
 
     /**
      * Get the current iterator value.

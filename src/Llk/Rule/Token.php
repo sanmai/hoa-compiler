@@ -54,28 +54,28 @@ final class Token extends Rule
     /**
      * LL(k) compiler of hoa://Library/Regex/Grammar.pp.
      *
-     * @var \Hoa\Compiler\Llk\Parser
+     * @var \Hoa\Compiler\Llk\Parser|null
      */
     protected static $_regexCompiler = null;
 
     /**
      * Token name.
      *
-     * @var string
+     * @var string|null
      */
     protected $_tokenName            = null;
 
     /**
      * Namespace.
      *
-     * @var string
+     * @var string|null
      */
     protected $_namespace            = null;
 
     /**
      * Token representation.
      *
-     * @var string
+     * @var string|null
      */
     protected $_regex                = null;
 
@@ -84,12 +84,12 @@ final class Token extends Rule
      *
      * @var \Hoa\Compiler\Llk\TreeNode
      */
-    protected $_ast                  = null;
+    protected $_ast;
 
     /**
      * Token value.
      *
-     * @var string
+     * @var string|null
      */
     protected $_value                = null;
 
@@ -117,9 +117,9 @@ final class Token extends Rule
     /**
      * Constructor.
      *
-     * @param   string  $name           Name.
+     * @param   string|int  $name           Name.
      * @param   string  $tokenName      Token name.
-     * @param   string  $nodeId         Node ID.
+     * @param   string|null  $nodeId         Node ID.
      * @param   int     $unification    Unification index.
      * @param   bool    $kept           Whether the token is kept or not in the AST.
      */
@@ -177,9 +177,9 @@ final class Token extends Rule
      * Set representation.
      *
      * @param   string  $regex    Representation.
-     * @return  string
+     * @return  string|null
      */
-    public function setRepresentation($regex)
+    public function setRepresentation(string $regex)
     {
         $old          = $this->_regex;
         $this->_regex = $regex;
@@ -190,7 +190,7 @@ final class Token extends Rule
     /**
      * Get token representation.
      *
-     * @return  string
+     * @return  string|null
      */
     public function getRepresentation()
     {
@@ -213,7 +213,7 @@ final class Token extends Rule
 
         if (null === $this->_ast) {
             $this->_ast = static::$_regexCompiler->parse(
-                $this->getRepresentation()
+                (string) $this->getRepresentation()
             );
         }
 
@@ -226,7 +226,7 @@ final class Token extends Rule
      * @param   string  $value    Value.
      * @return  string
      */
-    public function setValue($value)
+    public function setValue(string $value)
     {
         $old          = $this->_value;
         $this->_value = $value;
@@ -239,7 +239,7 @@ final class Token extends Rule
      *
      * @return  string
      */
-    public function getValue()
+    public function getValue(): string
     {
         return $this->_value;
     }
