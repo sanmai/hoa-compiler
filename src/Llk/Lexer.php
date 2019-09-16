@@ -304,11 +304,9 @@ final class Lexer
 
         if (false === $preg) {
             throw new Compiler\Exception\InternalError(
-                sprintf(
-                    'Lexer encountered a PCRE error (code: %d), full regex: "%s".',
-                    preg_last_error(),
-                    $_regex
-                )
+                'Lexer encountered a PCRE error on a lexeme "%s", full regex: "%s". Please report this issue to the maintainers.',
+                preg_last_error(),
+                [$lexeme, $_regex]
             );
         }
 
