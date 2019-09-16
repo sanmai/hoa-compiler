@@ -289,9 +289,9 @@ final class Lexer
      */
     protected function matchLexeme($lexeme, $regex, $offset)
     {
-        $_regex = '#\G(?|' . str_replace('#', '\#', $regex) . ')#' . $this->_pcreOptions;
+        $_regex = str_replace('#', '\#', $regex);
         $preg   = @preg_match(
-            $_regex,
+            '#\G(?|' . $_regex . ')#' . $this->_pcreOptions,
             $this->_text,
             $matches,
             0,
