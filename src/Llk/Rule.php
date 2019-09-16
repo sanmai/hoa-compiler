@@ -205,9 +205,9 @@ abstract class Rule
     /**
      * Get node options.
      *
-     * @retrun  array
+     * @return array
      */
-    public function getNodeOptions()
+    public function getNodeOptions(): array
     {
         return $this->_nodeOptions;
     }
