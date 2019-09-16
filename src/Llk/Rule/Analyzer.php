@@ -191,7 +191,9 @@ final class Analyzer
     /**
      * Implementation of “rule”.
      *
-     * @return  int|null
+     * @return int|null
+     *
+     * @param null|string $pNodeId
      */
     protected function rule(&$pNodeId)
     {
@@ -201,7 +203,9 @@ final class Analyzer
     /**
      * Implementation of “choice”.
      *
-     * @return  int|null
+     * @return int|null
+     *
+     * @param null|string $pNodeId
      */
     protected function choice(&$pNodeId)
     {
@@ -255,7 +259,9 @@ final class Analyzer
     /**
      * Implementation of “concatenation”.
      *
-     * @return  mixed
+     * @return mixed
+     *
+     * @param null|string $pNodeId
      */
     protected function concatenation(&$pNodeId)
     {
@@ -294,8 +300,11 @@ final class Analyzer
     /**
      * Implementation of “repetition”.
      *
-     * @return  mixed
-     * @throws  \Hoa\Compiler\Exception
+     * @return null|int
+     *
+     * @throws \Hoa\Compiler\Exception
+     *
+     * @param null|string $pNodeId
      */
     protected function repetition(&$pNodeId)
     {
@@ -395,9 +404,12 @@ final class Analyzer
     /**
      * Implementation of “simple”.
      *
-     * @return  mixed
-     * @throws  \Hoa\Compiler\Exception
-     * @throws  \Hoa\Compiler\Exception\Rule
+     * @return null|int
+     *
+     * @throws \Hoa\Compiler\Exception
+     * @throws \Hoa\Compiler\Exception\Rule
+     *
+     * @param null|string $pNodeId
      */
     protected function simple(&$pNodeId)
     {
