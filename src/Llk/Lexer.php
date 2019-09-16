@@ -105,12 +105,16 @@ final class Lexer
      * Text tokenizer: splits the text in parameter in an ordered array of
      * tokens.
      *
-     * @param   string  $text      Text to tokenize.
-     * @param   array   $tokens    Tokens to be returned.
-     * @return  \Generator
-     * @throws  \Hoa\Compiler\Exception\UnrecognizedToken
+     * @param string  $text      Text to tokenize.
+     * @param array[]   $tokens    Tokens to be returned.
+     *
+     * @return \Generator|array[]
+     *
+     * @throws \Hoa\Compiler\Exception\UnrecognizedToken
+     *
+     * @psalm-return \Generator<int, array{token: string, value: string, length: int|false, namespace: array|string, keep: true, offset: int}>
      */
-    public function lexMe($text, array $tokens)
+    public function lexMe($text, array $tokens): \Generator
     {
         $this->_text       = $text;
         $this->_tokens     = $tokens;
@@ -185,14 +189,19 @@ final class Lexer
     /**
      * Compute the next token recognized at the beginning of the string.
      *
-     * @param   int  $offset    Offset.
-     * @return  array
-     * @throws  \Hoa\Compiler\Exception\Lexer
+     * @param int  $offset    Offset.
+     *
+     * @return (array|bool|int|string)[]|array[]|null
+     *
+     * @throws \Hoa\Compiler\Exception\Lexer
+     *
+     * @psalm-return array{token: string, value: string, length: int|false, namespace: array, keep: bool}|null
      */
     protected function nextToken($offset)
     {
         $tokenArray = &$this->_tokens[$this->_lexerState];
 
+        $previousNamespace = null;
         foreach ($tokenArray as $lexeme => $bucket) {
             list($regex, $nextState) = $bucket;
 
@@ -266,11 +275,15 @@ final class Lexer
     /**
      * Check if a given lexeme is matched at the beginning of the text.
      *
-     * @param   string  $lexeme    Name of the lexeme.
-     * @param   string  $regex     Regular expression describing the lexeme.
-     * @param   int     $offset    Offset.
-     * @return  array
-     * @throws  \Hoa\Compiler\Exception\Lexer
+     * @param string  $lexeme    Name of the lexeme.
+     * @param string  $regex     Regular expression describing the lexeme.
+     * @param int     $offset    Offset.
+     *
+     * @return (int|false|string)[]|null
+     *
+     * @throws \Hoa\Compiler\Exception\Lexer
+     *
+     * @psalm-return array{token: string, value: string, length: int|false}|null
      */
     protected function matchLexeme($lexeme, $regex, $offset)
     {

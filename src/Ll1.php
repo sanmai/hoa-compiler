@@ -356,7 +356,7 @@ abstract class Ll1
         $_states       = array_flip($this->_states[$c]);
         $_actions      = [$c => 0];
 
-        $nextChar      = null;
+        $nextChar      = '';
         $nextToken     = 0;
         $nextState     = $_states['GO'];
         $nextAction    = $_states['GO'];
@@ -642,7 +642,7 @@ abstract class Ll1
      * @param   string  &$in    Source code.
      * @return  void
      */
-    final protected function pre(&$in)
+    protected function pre(&$in)
     {
         return;
     }
@@ -650,9 +650,9 @@ abstract class Ll1
     /**
      * Verify compiler state when ending the source code.
      *
-     * @return  bool
+     * @return bool
      */
-    final protected function end()
+    protected function end()
     {
         return true;
     }

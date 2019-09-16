@@ -76,7 +76,7 @@ class Parser
     /**
      * Rules, to be defined as associative array, name => Rule object.
      *
-     * @var array
+     * @var Rule[]
      */
     protected $_rules         = null;
 
@@ -288,6 +288,7 @@ class Parser
      */
     final protected function _parse(Rule $zeRule, $next)
     {
+        $regex = null;
         if ($zeRule instanceof Rule\Token) {
             $name = $this->_tokenSequence->current()['token'];
 
@@ -771,10 +772,12 @@ class Parser
     /**
      * Get root rule.
      *
-     * @return  string
+     * @return string
      */
     final public function getRootRule()
     {
+        \assert([] !== $this->_rules);
+
         foreach ($this->_rules as $rule => $_) {
             if (!is_int($rule)) {
                 break;

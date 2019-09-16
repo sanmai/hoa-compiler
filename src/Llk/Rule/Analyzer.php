@@ -376,7 +376,7 @@ final class Analyzer
             $this->_lexer->next();
         }
 
-        if (!isset($min)) {
+        if (!isset($min) || !isset($max)) {
             return $children;
         }
 
