@@ -340,10 +340,12 @@ abstract class Ll1
     /**
      * Compile a source code.
      *
-     * @param   string  $in    Source code.
-     * @return  void
-     * @throws  \Hoa\Compiler\Exception\FinalStateHasNotBeenReached
-     * @throws  \Hoa\Compiler\Exception\IllegalToken
+     * @param string  $in    Source code.
+     *
+     * @return void
+     *
+     * @throws \Hoa\Compiler\Exception\FinalStateHasNotBeenReached
+     * @throws \Hoa\Compiler\Exception\IllegalToken
      */
     final public function compile($in)
     {
@@ -385,7 +387,7 @@ abstract class Ll1
                     true === $this->end()) {
 
                     //echo '*********** END REACHED **********' . "\n";
-                    return true;
+                    return;
                 }
 
                 throw new Exception\FinalStateHasNotBeenReached(

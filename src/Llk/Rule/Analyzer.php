@@ -39,6 +39,7 @@
 namespace Hoa\Compiler\Llk\Rule;
 
 use Hoa\Compiler;
+use Hoa\Compiler\Llk\Rule;
 use Hoa\Iterator;
 
 /**
@@ -105,7 +106,7 @@ final class Analyzer
     /**
      * Parsed rules.
      *
-     * @var array
+     * @var Rule[]
      */
     protected $_parsedRules             = null;
 
@@ -131,13 +132,15 @@ final class Analyzer
     }
 
     /**
-      * Build the analyzer of the rules (does not analyze the rules).
-      *
-      * @param   array  $rules    Rule to be analyzed.
-      * @return  void
-      * @throws  \Hoa\Compiler\Exception
-      */
-    public function analyzeRules(array $rules)
+     * Build the analyzer of the rules (does not analyze the rules).
+     *
+     * @param string[]  $rules    Rule to be analyzed.
+     *
+     * @return Rule[]
+     *
+     * @throws \Hoa\Compiler\Exception
+     */
+    public function analyzeRules(array $rules): array
     {
         if (empty($rules)) {
             throw new Compiler\Exception\Rule('No rules specified!', 0);
@@ -188,7 +191,7 @@ final class Analyzer
     /**
      * Implementation of “rule”.
      *
-     * @return  mixed
+     * @return  int|null
      */
     protected function rule(&$pNodeId)
     {
@@ -198,7 +201,7 @@ final class Analyzer
     /**
      * Implementation of “choice”.
      *
-     * @return  mixed
+     * @return  int|null
      */
     protected function choice(&$pNodeId)
     {
