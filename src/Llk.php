@@ -121,7 +121,7 @@ abstract class Llk
                 return $ruleName;
             }
 
-            return '\'' . $ruleName . '\'';
+            return var_export($ruleName, true);
         };
 
         foreach ($parser->getTokens() as $namespace => $tokens) {
