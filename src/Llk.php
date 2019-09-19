@@ -125,19 +125,10 @@ abstract class Llk
         };
 
         foreach ($parser->getTokens() as $namespace => $tokens) {
-            $outTokens .= '                \'' . $namespace . '\' => [' . "\n";
-
-            foreach ($tokens as $tokenName => $tokenValue) {
-                $outTokens .=
-                    '                    \'' . $tokenName . '\' => \'' .
-                    str_replace(
-                        ['\'', '\\\\'],
-                        ['\\\'', '\\\\\\'],
-                        $tokenValue
-                    ) . '\',' . "\n";
-            }
-
-            $outTokens .= '                ],' . "\n";
+            $outTokens .= '                \'' . $namespace . '\' =>' . "\n";
+            $outTokens .= join("\n", array_map(function ($line) {
+                return '                    ' . $line;
+            }, explode("\n", var_export($tokens, true)))) . "\n";
         }
 
         foreach ($parser->getRules() as $rule) {
@@ -176,11 +167,7 @@ abstract class Llk
             // Node ID.
             $nodeId = $rule->getNodeId();
 
-            if (null === $nodeId) {
-                $arguments['nodeId'] = 'null';
-            } else {
-                $arguments['nodeId'] = '\'' . $nodeId . '\'';
-            }
+            $arguments['nodeId'] = var_export($nodeId, true);
 
             if ($rule instanceof Rule\Token) {
                 // Unification.
@@ -224,7 +211,7 @@ abstract class Llk
         foreach ($parser->getPragmas() as $pragmaName => $pragmaValue) {
             $outPragmas .=
                 "\n" .
-                '                \'' . $pragmaName . '\' => ' .
+                '                ' . var_export($pragmaName, true) . ' => ' .
                 (is_bool($pragmaValue)
                     ? (true === $pragmaValue ? 'true' : 'false')
                     : (is_int($pragmaValue)

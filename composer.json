@@ -29,7 +29,8 @@
         "hoa/regex": "^1",
         "hoa/test": "^2",
         "php-coveralls/php-coveralls": "^2.1",
-        "phpunit/phpunit": ">=6.5.14"
+        "phpunit/phpunit": ">=6.5.14",
+        "sanmai/linter": "^0.1.0"
     },
     "extra": {
         "branch-alias": {
