@@ -21,6 +21,7 @@ install:
   - pecl install pcov || true
 
 script:
+  - find . -type f -name \*.php -print0 | xargs -P2 -0 -n1 php -l
   - php vendor/bin/phpunit --coverage-clover build/logs/clover.xml
   - phpenv config-rm xdebug.ini || true
   - vendor/bin/atoum -ncc -d atoum/
