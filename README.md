@@ -1,6 +1,12 @@
 [![Build Status](https://travis-ci.org/sanmai/hoa-compiler.svg?branch=master)](https://travis-ci.org/sanmai/hoa-compiler)
 [![Coverage Status](https://coveralls.io/repos/github/sanmai/hoa-compiler/badge.svg)](https://coveralls.io/github/sanmai/hoa-compiler)
 
+Install with:
+
+```
+composer require sanmai/hoa-compiler
+```
+
 # Hoa\Compiler
 
 This library allows to manipulate LL(1) and LL(k) compiler compilers. A
