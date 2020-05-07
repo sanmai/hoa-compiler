@@ -8,7 +8,7 @@ Install with:
 composer require sanmai/hoa-compiler
 ```
 
-This version of the library should be input-output-wise backward-compatible with the original package. For example, you can use this version together with `jms/serializer` to avoid [known problems](https://github.com/schmittjoh/serializer/issues/1182) some of the dependencies of the original package have with PHP 7.4.
+This version of the library should be input-output-wise backward-compatible with [the original package](https://github.com/hoaproject/Compiler). For example, you can use this version together with `jms/serializer` to avoid [known problems](https://github.com/schmittjoh/serializer/issues/1182) some of the dependencies of the original package have with PHP 7.4.
 
 BC breaking changes include:
 
