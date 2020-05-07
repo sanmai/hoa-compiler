@@ -8,6 +8,13 @@ Install with:
 composer require sanmai/hoa-compiler
 ```
 
+This version of the library should be input-output-wise backward-compatible with the original package. For example, you can use this version together with `jms/serializer` to avoid [known problems](https://github.com/schmittjoh/serializer/issues/1182) some of the dependencies of the original package have with PHP 7.4.
+
+BC breaking changes include:
+
+- `Hoa\Exception\Exception` sub-classes are no longer thrown, please switch to `Hoa\Compiler\Exception`
+- The package itself does not depend on development time only dependencies. If you need to call `getAST()`, you need to manually install `hoa/regex` and `hoa/file`.
+
 # Hoa\Compiler
 
 This library allows to manipulate LL(1) and LL(k) compiler compilers. A
