@@ -55,6 +55,7 @@
         "psr-4": {
             "Hoa\\Compiler\\Test\\": "atoum/",
             "Tests\\Hoa\\Compiler\\": "tests/"
-        }
+        },
+        "files": ["tests/bootstrap.php"]
     }
 }
