@@ -55,4 +55,3 @@ jobs:
       - name: Validate composer.json
         run: |
           composer validate --strict
-          composer normalize --diff --dry-run
