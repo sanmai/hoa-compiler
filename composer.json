@@ -20,7 +20,6 @@
         "hoa/compiler": "3.17.08.08"
     },
     "require-dev": {
-        "ergebnis/composer-normalize": "^0.2 || ^2.8",
         "friendsofphp/php-cs-fixer": "^2.15",
         "hoa/file": "*",
         "hoa/regex": "^1",
