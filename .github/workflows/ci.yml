@@ -46,7 +46,7 @@ jobs:
       - name: Install dependencies
         run: |
           composer update --prefer-dist --no-interaction --no-progress ${{ matrix.dependencies }}
-          composer install --prefer-dist --no-interaction --no-progress
+          composer install --prefer-dist --no-interaction --no-progress ${{ matrix.dependencies }}
 
       - name: Execute tests
         run: |
