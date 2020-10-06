@@ -27,6 +27,7 @@
         "hoa/file": "*",
         "hoa/json": "^2",
         "hoa/regex": "^1",
+        "hoa/stream": "^1",
         "hoa/test": "^2",
         "php-coveralls/php-coveralls": "^2.1",
         "phpunit/phpunit": ">=6.5.14",
@@ -54,6 +55,7 @@
         "psr-4": {
             "Hoa\\Compiler\\Test\\": "atoum/",
             "Tests\\Hoa\\Compiler\\": "tests/"
-        }
+        },
+        "files": ["tests/bootstrap.php"]
     }
 }
