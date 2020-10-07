@@ -1,10 +1,11 @@
+branches:
+  only:
+    - master
+    - main
+
 language: php
 php:
   - 7.0
-  - 7.1
-  - 7.2
-  - 7.3
-  - 7.4
 
 jobs:
   fast_finish: true
@@ -17,7 +18,8 @@ cache:
     - build/cache
 
 install:
-  - composer install --prefer-dist
+  - composer require --prefer-dist --no-interaction --no-progress --dev $(composer config extra.require-atoum | jq -r 'to_entries[] | "\(.key):\(.value)"')
+  - composer install --prefer-dist --no-interaction --no-progress
   - pecl install pcov || true
 
 script:
@@ -27,3 +29,4 @@ script:
 
 after_success:
   - travis_retry php vendor/bin/php-coveralls -v
+

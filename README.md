@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/sanmai/hoa-compiler.svg?branch=master)](https://travis-ci.org/sanmai/hoa-compiler)
+[![Build Status](https://travis-ci.com/sanmai/hoa-compiler.svg?branch=master)](https://travis-ci.com/sanmai/hoa-compiler)
 [![Coverage Status](https://coveralls.io/repos/github/sanmai/hoa-compiler/badge.svg)](https://coveralls.io/github/sanmai/hoa-compiler)
 [![Latest Stable Version](https://poser.pugx.org/sanmai/hoa-compiler/v/stable)](https://packagist.org/packages/sanmai/hoa-compiler)
 

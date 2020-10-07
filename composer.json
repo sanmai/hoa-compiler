@@ -20,31 +20,33 @@
         "hoa/compiler": "3.17.08.08"
     },
     "require-dev": {
-        "atoum/atoum": "^3",
-        "atoum/stubs": "*",
         "friendsofphp/php-cs-fixer": "^2.15",
-        "hoa/console": "^3",
         "hoa/file": "*",
-        "hoa/json": "^2",
         "hoa/regex": "^1",
-        "hoa/stream": "^1",
-        "hoa/test": "^2",
         "php-coveralls/php-coveralls": "^2.1",
         "phpunit/phpunit": ">=6.5.14",
         "sanmai/linter": "^0.1.0"
     },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "0.1.x-dev"
-        }
-    },
     "suggest": {
-        "hoa/regex": "For getAST to work",
         "hoa/file": "For getAST to work",
+        "hoa/regex": "For getAST to work",
         "sanmai/hoa-protocol": "If you have trouble with a conflicting resolve()"
     },
     "config": {
         "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
+        },
+        "require-atoum": {
+            "atoum/atoum": "^3",
+            "atoum/stubs": "*",
+            "hoa/console": "^3",
+            "hoa/json": "^2",
+            "hoa/stream": "^1",
+            "hoa/test": "^2"
+        }
     },
     "autoload": {
         "psr-4": {
@@ -56,6 +58,8 @@
             "Hoa\\Compiler\\Test\\": "atoum/",
             "Tests\\Hoa\\Compiler\\": "tests/"
         },
-        "files": ["tests/bootstrap.php"]
+        "files": [
+            "tests/bootstrap.php"
+        ]
     }
 }
