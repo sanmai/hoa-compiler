@@ -54,3 +54,7 @@ jobs:
       - name: Run tests
         run: |
           vendor/bin/phpunit
+
+      - name: Validate composer.json
+        run: |
+          composer validate --strict
