@@ -12,7 +12,7 @@
         }
     ],
     "require": {
-        "php": "^7.0",
+        "php": ">=7.0",
         "hoa/iterator": "^2.17",
         "hoa/visitor": "^2.17"
     },
@@ -25,7 +25,7 @@
         "hoa/regex": "^1",
         "php-coveralls/php-coveralls": "^2.1",
         "phpunit/phpunit": ">=6.5.14",
-        "sanmai/linter": "^0.1.0"
+        "sanmai/linter": "^0.2"
     },
     "suggest": {
         "hoa/file": "For getAST to work",
