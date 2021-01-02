@@ -1,46 +1,38 @@
-name: Code Style
+name: Coding Standards
 
 on:
   pull_request:
   push:
     branches:
-      - master
       - main
+      - master
 
 jobs:
-  build:
+  coding-standards:
+    name: Coding Standards
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        php-version: ['7.4']
-
-    name: PHP ${{ matrix.php-version }}
+    env:
+      PHP_CS_FIXER_VERSION: v2.17.3
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php-version }}
-          extensions: 
-          tools: composer:v2
+          php-version: 7.4
+          coverage: none
+          tools: php-cs-fixer:${{ env.PHP_CS_FIXER_VERSION }}
 
-      - name: Cache dependencies
+      - name: Restore PHP-CS-Fixer cache
         uses: actions/cache@v2
         with:
-          path: ~/.cache/composer
-          key: composer-${{ matrix.php-version }}-${{ hashFiles('**/composer.*') }}
-          restore-keys: |
-            composer-${{ matrix.php-version }}-
-            composer-
+          path: .php_cs.cache
+          key: "php-cs-fixer"
+          restore-keys: "php-cs-fixer"
 
-      - name: Install dependencies
+      - name: Run PHP-CS-Fixer, version ${{ env.PHP_CS_FIXER_VERSION }}
         run: |
-          composer install --prefer-dist --no-interaction --no-progress
-
-      - name: Check code style
-        run: |
-          php vendor/bin/php-cs-fixer --using-cache=no --diff --dry-run --stop-on-violation --verbose fix
-          
+          php-cs-fixer fix --diff --diff-format=udiff --dry-run --verbose
