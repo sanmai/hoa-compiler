@@ -3,7 +3,7 @@ all: test
 
 .PHONY: test
 test: cs
-	php vendor/bin/atoum -ncc -d atoum/Unit/
+	if [ -f vendor/bin/atoum ]; then php vendor/bin/atoum -ncc -d atoum/Unit/; fi
 	php vendor/bin/phpunit --coverage-text
 
 .PHONY: cs
@@ -11,4 +11,4 @@ cs: vendor/autoload.php
 	php vendor/bin/php-cs-fixer fix -v
 
 vendor/autoload.php: composer.json
-	composer update
+	composer update && touch vendor/autoload.php
